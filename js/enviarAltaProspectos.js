@@ -12,6 +12,20 @@
 		$('#rfcEmpresa').focusout(function() {
 								validarRFC();
 							});
+		$('#telefonoContacto').keyup(function() {
+								quitarRequired('#telefonoContacto', '#correoContacto');
+								
+							});
+		$('#telefonoContacto').focusout(function() {
+								quitarRequired('#telefonoContacto', '#correoContacto');
+							});
+		
+		$('#correoContacto').keyup(function() {
+								quitarRequired('#correoContacto', '#telefonoContacto');
+							});
+		$('#correoContacto').focusout(function() {
+								quitarRequired('#correoContacto', '#telefonoContacto');
+							});
 		
     $("#abadForm2").submit(function(e) {
 			
@@ -141,5 +155,13 @@
 							//$("#conentDetallePros").load("/views/prospectos/vistasDetalle/verNotas.php", {idprospecto: $("#idprospecto").val(), idcontacto: $("#idContacto").val() } );
 				 });
 				return false;
+		}
+		
+		function quitarRequired(campoCondicion, campoModificar){
+				if($(campoCondicion).val().length < 1){
+									$( campoModificar ).prop( "required", true );
+								}else{
+									$( campoModificar ).prop( "required", false );
+								}
 		}
   });

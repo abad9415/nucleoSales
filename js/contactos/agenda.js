@@ -17,8 +17,8 @@ $(document).ready( function() {
                       '&idcita='+$("#idcita").val()+
                       '&idContacto='+$("#idContacto").val()
               }).done(function(result) {
-            alert(result);
-            
+            //alert(result);
+            swal(result + "!", "", "success")
             $("#conentDetallePros").load("/views/prospectos/vistasDetalle/verCitas.php?idprospecto=" + $("#idprospecto").val());
             });
               return false;

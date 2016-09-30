@@ -31,9 +31,6 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
 
 
 ?>
-
-<input type="hidden" id="idprospecto" value="">
-<input type="hidden" id="idcontacto" value="">
     <div class="contentInt">
         <form id="abadForm2" method="post">
           <div class="row">
@@ -47,26 +44,26 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
               <div class="col-md-4 col-sm-6">
                    <div class="form-group">
                        <label for="nombreEmpresa">Nombre</label>
-                       <input type="text" id="nombreEmpresa" name="nombreEmpresa" class="form-control inputProspecto">
+                       <input type="text" id="nombreEmpresa" name="nombreEmpresa" class="form-control inputProspecto" required>
                    </div>
 									<div class="form-group" id="content-rfc-prospecto">
                        <label for="rfcEmpresa">RFC</label>
-                       <input type="text" id="rfcEmpresa" name="rfcEmpresa" class="form-control inputProspecto">
+                       <input type="text" id="rfcEmpresa" name="rfcEmpresa" class="form-control inputProspecto" required>
                    </div>
 
                     <div class="form-group">
                         <label for="calleEmpresa">Calle</label>
-                        <input type="text" id="calleEmpresa" name="calleEmpresa" class="form-control inputProspecto">
+                        <input type="text" id="calleEmpresa" name="calleEmpresa" class="form-control inputProspecto" required>
                     </div>
 
                     <div class="form-group">
                         <label for="numeroEmpresa">N°</label>
-                        <input type="number" id="numeroEmpresa" name="numeroEmpresa" class="form-control inputProspecto">
+                        <input type="number" id="numeroEmpresa" name="numeroEmpresa" class="form-control inputProspecto" required>
                     </div>
 
                     <div class="form-group">
                         <label for="coloniaEmpresa">Colonia</label>
-                        <input type="text" id="coloniaEmpresa" name="coloniaEmpresa" class="form-control inputProspecto">
+                        <input type="text" id="coloniaEmpresa" name="coloniaEmpresa" class="form-control inputProspecto" required>
                     </div>
 										<div class="form-group">
                         <label for="cpEmpresa">Codigo Postal</label>
@@ -77,7 +74,7 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                    
                     <div class="form-group">
                         <label for="ciudadEmpresa">Ciudad</label>
-                        <input type="text" id="ciudadEmpresa" name="ciudadEmpresa" class="form-control inputProspecto">
+                        <input type="text" id="ciudadEmpresa" name="ciudadEmpresa" class="form-control inputProspecto" required>
                     </div>
 
                     <div class="form-group">
@@ -130,24 +127,24 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                     </select>
                     
                    <label for="nombreContacto">Nombre</label>
-                    <input type="text" id="nombreContacto" name="nombreContacto" class="form-control inputContacto">
+                    <input type="text" id="nombreContacto" name="nombreContacto" class="form-control inputContacto" required>
 
                     <label for="apePaternoContacto">Apellido Paterno</label>
-                    <input type="text" id="apePaternoContacto" name="apePaternoContacto" class="form-control inputContacto">
+                    <input type="text" id="apePaternoContacto" name="apePaternoContacto" class="form-control inputContacto" required>
 
                     <label for="apeMaternoContacto">Apellido Materno</label>
-                    <input type="text" id="apeMaternoContacto" name="apeMaternoContacto" class="form-control inputContacto">
+                    <input type="text" id="apeMaternoContacto" name="apeMaternoContacto" class="form-control inputContacto" required>
                 </div>
 
                 <div class="col-md-4 col-sm-6">
                     <label for="telefonoContacto">Telefono</label>
-                    <input type="tel" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto">
+                    <input type="tel" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto" required>
 
                     <label for="correoContacto">Correo</label>
-                    <input type="email" id="correoContacto" name="correoContacto" class="form-control inputContacto">
+                    <input type="email" id="correoContacto" name="correoContacto" class="form-control inputContacto" required>
 
                     <label for="cargoContacto">Cargo</label>
-                    <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto">
+                    <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto" required>
                 </div>
 								<input type="hidden" id="cargoContacto" name="cargoContacto" class="form-control">
                 </div>

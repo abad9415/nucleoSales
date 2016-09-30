@@ -25,8 +25,8 @@ while($row = $consultarNotasRow->fetch_assoc()) {
 
     <div class='btnsNotasGuardadas'> 
       <input type="hidden" value="<?=$idNota;?>" id="idNota">
-          <input type="submit" value="Guardar" class="button eliminarNota">
-          <a class='button' id="cancelarNota">Cancelar</a>
+          <input type="submit" value="Guardar" class="btn btn-success eliminarNota">
+          <a class='btn btn-danger' id="cancelarNota">Cancelar</a>
     </div>
 </form>
 <script>

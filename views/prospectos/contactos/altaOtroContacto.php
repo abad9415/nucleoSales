@@ -97,8 +97,8 @@ if (empty($idcontacto)) {
 			}else if($("#btnActionGeneral").val()=="Modificar"){
 				urlAction = "/actions/contactos/actualizarContacto.php";
 			}
-			alert($("#idcontacto").val())
-			alert("segun acabo de imprimir el id del contacto")
+		//	alert($("#idcontacto").val())
+			//alert("segun acabo de imprimir el id del contacto")
        $.ajax({
 				type: "POST",
 				dataType:"json",
@@ -113,7 +113,8 @@ if (empty($idcontacto)) {
                          '&idcontacto='+$("#idcontacto").val()+
            '&idprospecto='+$("#idprospecto").val(),
 				success: function(data){
-        alert(data.alert);
+        //alert(data.alert);
+					swal(data.alert + "!", "", "success")
           $("#conentDetallePros").load("/views/prospectos/vistasDetalle/verContactos.php?idprospecto=" + $("#idprospecto").val());
 				}	
 			});
