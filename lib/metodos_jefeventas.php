@@ -1,0 +1,323 @@
+<?php
+
+class jefeventas{
+  var $nombre;
+	var $apm;
+	var $app;
+	var $correo;
+	var $calle;
+	var $numero;
+	var $colonia;
+	var $ciudad;
+	var $user;
+	var $password;
+	var $idvendedor;
+	var $idprospecto;
+
+
+	
+function __construct($datosConexionBD){
+			$this->datosConexionBD=$datosConexionBD;
+		 }
+  
+  	public function obtener_vendedores(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT * FROM vendedor";//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+  
+  
+  
+}
+		public function vendedorid(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT * FROM vendedor where idvendedor=".$this->idvendedor;//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+  
+  
+  
+}
+	
+	public function agregarvendedor(){
+		
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "INSERT INTO vendedor (nombreusuario,apellidoM,apellidoP,correo,calle,numerodomicilio,colonia,ciudad,user,password,idtipousuario)
+						VALUES (
+						'".$this->nombre."',
+						'".$this->apm."',
+						'".$this->app."',
+						'".$this->correo."',
+						'".$this->calle."',
+						'".$this->numero."',
+						'".$this->colonia."',
+						'".$this->ciudad."',
+						'".$this->user."',
+						'".$this->password."',
+						1);";//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+								
+  
+	
+	
+}
+	public function Listadototal($Etapa,$IDV){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+
+						/* check connection */
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+					switch ($IDV){
+						case 0:
+									$query = "SELECT vendedor.nombreusuario, prospecto.nombre, oportunidad.fechadeetapa, oportunidad.monto
+									FROM oportunidad
+									INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
+									INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto
+									INNER JOIN vendedor ON vendedor.idvendedor = prospecto.idvendedor
+									WHERE etapadeventa.nombre ='".$Etapa."'";
+							break;
+						default:
+							$query = "SELECT vendedor.nombreusuario, prospecto.nombre, oportunidad.fechadeetapa, oportunidad.monto
+									FROM oportunidad
+									INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
+									INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto
+									INNER JOIN vendedor ON vendedor.idvendedor = prospecto.idvendedor
+									WHERE etapadeventa.nombre ='".$Etapa."' and vendedor.idvendedor='".$IDV."'";
+							break;
+				 				}
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+		public function consultarEtapas(){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT * FROM  etapadeventa ";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+	
+		public function etapasvendedores($idetapaP,$IDV){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+			
+						
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						switch($IDV){
+										case 0:
+											
+											$query = "SELECT COUNT( oportunidad.idetapa ) AS  'Netapas' 
+											FROM etapadeventa 
+											INNER JOIN oportunidad ON etapadeventa.idetapa = oportunidad.idetapa 
+											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto  
+											WHERE etapadeventa.idetapa ='".$idetapaP."'";
+										break;
+										default:
+											
+											$query = "SELECT COUNT( oportunidad.idetapa ) AS  'Netapas' 
+											FROM etapadeventa 
+											INNER JOIN oportunidad ON etapadeventa.idetapa = oportunidad.idetapa 
+											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto  
+											INNER JOIN vendedor on vendedor.idvendedor=prospecto.idvendedor 
+											WHERE etapadeventa.idetapa ='".$idetapaP."' and vendedor.idvendedor='".$IDV."'";
+										break;
+											}
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+	
+		public function selectVendedores(){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+			
+						
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT idvendedor,concat(nombreusuario,' ',apellidoP,' ',apellidoM)As'Nombre' FROM vendedor
+											WHERE idtipousuario =1";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+	
+	//<--Metas
+			 public function CGanado($mes,$anio){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT COUNT( oportunidad.idetapa ) AS  'TotalV' 
+											FROM etapadeventa 
+											INNER JOIN oportunidad ON etapadeventa.idetapa = oportunidad.idetapa 
+											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto 
+											INNER JOIN vendedor on vendedor.idvendedor=prospecto.idvendedor 
+											WHERE etapadeventa.idetapa =6 and MONTH(oportunidad.fechadeetapa) ='".$mes."' 
+											and YEAR(oportunidad.fechadeetapa)='".$anio."'";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}	
+			 
+			 			 public function CVentas($mes,$anio){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						$idvendedor=$_SESSION["idvendedor"];
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT Metas.Ventas,Metas.Ventas, Metas.Ventas, Metas.Citas, Metas.Prospectos
+											FROM Metas 
+											INNER JOIN vendedor on vendedor.idvendedor=Metas.idVendedor 
+											WHERE MONTH(Metas.fecha) ='".$mes."'
+											and YEAR(Metas.fecha)='".$anio."'
+											and vendedor.idvendedor='".$idvendedor."'";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+       
+			 public function Ccitas($mes,$anio){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT count(descripcion)as'Citas'
+											FROM agenda
+											INNER JOIN contacto ON agenda.idcontacto = contacto.idcontacto
+											INNER JOIN prospecto ON agenda.idprospecto=prospecto.idprospecto
+											INNER JOIN vendedor ON vendedor.idvendedor =prospecto.idvendedor 
+											where contacto.show = 0 
+											and MONTH(Defecha) ='".$mes."'
+											and YEAR(Defecha)='".$anio."'";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+			 
+			 			 public function Cprospecto($mes,$anio){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT count(nombre)as'Prospectos' FROM prospecto
+											inner join vendedor on vendedor.idvendedor=prospecto.idvendedor
+											WHERE MONTH(fechadecreacion) ='".$mes."'
+											and YEAR(fechadecreacion)='".$anio."'";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+			 //Metas-->
+	
+		public function cambiarvendedor(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "UPDATE prospecto SET idvendedor=".$this->idvendedor." WHERE idprospecto=".$this->idprospecto;//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+  
+  
+  
+}
+	
+}
+
+?>

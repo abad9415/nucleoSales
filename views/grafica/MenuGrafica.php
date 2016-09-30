@@ -1,0 +1,33 @@
+<script>
+  $("#Ventas").click(function() {
+			
+    $("#contentG").load("../views/grafica/Botones.php" );
+				
+    });
+    $("#Etapas").click(function(){
+			
+			$("#contentG").load( "../views/grafica/funnel.php" );
+  });
+  $("#Contacto").click(function(){
+			
+			$("#contentG").load( "../views/grafica/graficaContacto.php" );
+  });  
+</script>
+
+<div class="row">
+			<div id="menu" >
+				<ul class=" nav nav-tabs nav-justified">
+					<li role="presentation">
+						<a href="#" class="" role="button" id= "Ventas" ><span  class="icon  icon-bar-chart iconsize"></span> Ventas</a>
+					</li>
+					<li role="presentation">
+						<a href="#" class="" role="button" id= "Etapas" ><span  class="icon  icon-filter2 iconsize"></span> Etapas</a>
+					</li>
+          <li role="presentation">
+						<a href="#" class="" role="button" id= "Contacto" ><span  class="icon  icon-pie-chart iconsize"></span> Contacto</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="contentG" ></div>

@@ -1,0 +1,538 @@
+$azul: #197CDF
+$azul-hover: #2567A9
+$verde: #3D9970
+$verde-hover: #2F7455
+$white: #fff
+$gris: #DDDDDD
+$gris-hover: #9A9A9A
+$red: #FF4136
+$turquesa: #4aaed0
+$azulOscuro: #5D648D
+$azulOscuro-hover: #464C6B
+
+$rverde: rgba(8, 166, 95, .8)
+$RazulOscuro-hover: rgba(70, 76, 107, .8)
+html
+    margin: 0
+    padding: 0
+    body
+        background: #FAFAFA
+        textarea
+            resize: vertical
+.contentInt
+    background: #fff
+    width: 70%
+    height: auto
+    margin: 0 auto
+    box-shadow: 5px 5px 1px #A4A4A4
+    border-style: solid
+    border-color: #B2B2B2
+    border-width: 1px
+    padding: 35px
+#map_canvas
+    margin-top: 25px
+    width: 100%
+    height: 300px
+#map_canvasDetalle
+    width: 100%
+    height: 200px
+.rojo
+    background: red
+.moreEAT
+    font-size: 30px
+    color: $verde
+.moreEATW
+    font-size: 30px
+    color: $white
+.topEAT
+    margin-top: 15px
+.txt-oscuro
+    font-weight: bold
+.formsDetalleProspectos
+    input:disabled
+        border: none
+        background: none
+    select:disabled
+        border: none
+        background: none
+        appearance: none
+        -webkit-appearance: none
+        -moz-appearance: none
+.inputRadio
+    display: none
+.pegarLabel
+    width: 100%
+    padding: 5px
+    padding-left: 15px
+    text-align: left
+    &:hover
+        background: #DFDFDF
+.divliEAT
+    color: $azul
+    text-decoration: none
+    &:hover
+        background: none
+        cursor: pointer
+        text-decoration: none
+        color: $azul
+    &:active
+        text-decoration: none
+        color: $azul
+    &:link
+        text-decoration: none
+        color: $azul
+    &:visited
+        text-decoration: none
+        color: $azul
+.holaEAt
+    background: red
+.icon-ellipsis-v
+    padding: 7px
+.labelSinEstilos
+    font-weight: 100
+.mouseNormarl
+    cursor: auto
+.paginacionStyle
+    text-align: center
+    list-style: none
+    
+    a
+        text-decoration: none
+        padding: 10px
+        margin: 0
+        color: $azul
+    li
+        display: inline-block
+        margin: 5px
+    .activeEAT
+        color: $verde
+        font-weight: bold
+.txt-inline
+    margin: 0
+    padding: 0
+    display: inline
+    margin-top: -20px
+.RightEAT
+    float: right
+  
+/* detalleprospectos */
+.content-header-prospectos
+    display: flex
+    justify-content: center
+    zoom: 1.2
+.nombre-prospecto
+    margin: 10
+.conent-btn-menu-vendedor
+    position: absolute
+    width: 35px
+    height: 35px
+    background: $azul
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0
+    margin: 0
+    margin-left: 15px
+    margin-top: 15px
+    display: none
+    span
+        display: inline-block
+        margin: 0
+        padding: 0
+        font-size: 16px
+        color: white
+    &:hover
+        background: $azul-hover
+        cursor: pointer
+.circuloEAT
+    width: 55px
+    height: 55px
+    background: $azul
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 10px
+    padding: 0
+    p
+        display: inline-block
+        margin: 0
+        padding: 0
+        font-size: 30px
+        color: white
+        font-weight: bold
+.content-nombre-opciones-prospecto
+    display: flex
+    justify-content: space-between
+    margin-top: 10px
+    .nombre-prospecto
+        margin: 0
+    .btn-modificar-prospecto
+        background: $azul
+        display: block
+        width: 30px
+        height: 30px
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        color: white
+        &:hover
+            background: $azul-hover
+            cursor: pointer
+            opacity: .7
+.cuadradoEAT
+    background: $azul
+    color: $white
+    padding: 3px
+.content-info-prospecto
+    margin-right: 10px
+    .direccion-prospecto
+        margin-right: 20px
+        margin-top: 3px
+.content-meno-prsopectos
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+.btn-menu-prospecto
+    margin: 10px
+    margin-left: 45px
+/*encabezado vendedor*/
+.content-img-personal-vendedor
+    img
+        width: 130px
+.txt-nombre-vendedor
+    margin-left: 10px
+.content-menu-vendedor-items
+    display: flex
+    flex-flow: row wrap
+    justify-content: center
+.txt-nombre-vendedor
+    color: $white
+.quitar-style-button
+    background: none  
+    margin: none
+    border: none
+.MenuPrincipalEAT
+    z-index: 3
+.cabezera-red7-vendedor
+    display: none
+    background: $white
+    height: 65px
+    flex-flow: row wrap
+    justify-content: center
+    img
+        width: 60px
+        height: 60px
+/*encabezado vendedor*/
+/* ESTILOS DE LA VISTA DE PROSPECTOS*/
+.content-btn-principal-vista-prospecto
+    display: flex
+    justify-content: space-between
+
+/* ESTILOS DE LA VISTA DE PROSPECTOS*/
+/*ESTILOS OPORTUNIDADES*/
+.content-items-opotunidad
+    display: flex
+    flex-flow: row wrap
+    justify-content: center
+.content-oportunides-altaOportunidad
+    display: flex
+    flex-flow: row wrap
+    justify-content: center
+.inputOportunidad
+    background: $azul
+.content-btn-agregar-oportunidad, .content-costo-instalacion, .content-btns-oportunidades
+    margin-top: 10px
+    margin-left: 7px
+/*ESTILOS OPORTUNIDADES*/
+
+/* ESTILOS CONTACTOS -- NOTAS */
+.textarea-nuevaNota-contacto
+    width: 100%
+    height: 100px
+    border-style: solid
+    border-width: 2px
+    border-color: $azul
+    border-radius: 5px
+.notasContenedor
+    margin-bottom: 20px
+.cuadroNotas
+    display: inline-block
+    width: 100%
+    background: $azul
+    color: $white
+    padding: 5px
+    margin: 0px
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+    p
+        display: inline
+    span
+        display: inline
+        float: right
+.cuadroNotasInf
+    height: auto
+    margin-top: 1px
+    background: $gris
+    padding: 5px
+    border-bottom-left-radius: 3px
+    border-bottom-right-radius: 3px
+.textareaDisfrasada
+    background: $gris
+    outline: none
+    overflow: auto
+    border: none
+    width: 100%
+    padding: 5px
+    border-style: solid
+    border-top: none
+    border-bottom-width: 3px
+    border-color: $azul
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+.btnsNotasGuardadas
+    margin-top: -5px
+    margin-bottom: 15px
+  
+/* ESTILOS CONTACTOS -- NOTAS */
+
+/*ESTILOS CITAS */
+.contents-items
+    margin-bottom: 15px
+/*ESTILOS CITAS */
+
+/* COMPONENTES      COMPONENTES       COMPONENTES*/
+.circulo-material
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    &:hover
+        opacity: .8
+        cursor: pointer
+.id-prospecto-paginar-prospectos
+    width: 30px
+    height: 30px
+    color: $white
+    p
+        padding: 0
+        margin: 0
+.btn-agregar-plus
+    background: $azul
+    width: 30px
+    height: 30px
+    color: $white
+.btn-guardar
+    margin-top: 15px
+.row
+    padding: 15px
+/* COMPONENTES      COMPONENTES       COMPONENTES*/
+@media screen and (min-width: 993px) /*escritorio*/
+    html
+        body
+    .btn-menu-vendedor
+        margin: 5px
+        width: 150px
+        height: 50px
+        border: 1px solid #fafafa
+        display: flex
+        flex-flow: column wrap
+        justify-content: space-around
+        color: $gris-hover
+        font-size: 18px
+        &:hover
+            background: $rverde
+            color: $white
+            cursor: pointer
+        .content-elementos-menu-vendedor
+            text-align: center
+    .btn-cerrar-sesion
+        text-align: center
+    .txt-nombre-vendedor
+        color: black
+        font-size: 18px
+    .content-img-personal-vendedor
+        margin-left: 10%
+    .txt-rfc-detalle-prospecto
+        display: inline-block
+        margin-top: 5px
+    .content-descripcion-oportunidad
+        width: 70%
+    .content-descripcion-oportunidad-guardar
+        width: 74%
+    .content-boteBasura-oportunidad
+        width: 1%
+    .content-costo-oportunidad
+        width: 20%
+    .items-oportunidades
+        margin-left: 10px
+        margin-right: 10px
+    .elementos-oportunidades-cotizacion
+        height: 30px
+        margin-top: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        input
+            width: 100%
+            height: 100%
+        label
+            text-align: center
+            width: 20px
+            height: 20px
+            color: white
+            padding: 15px
+    .item-oportunidad
+        width: 48%
+        &:first-child
+            margin-right: 15px
+    .sn-margin-left
+        padding-left: 0 !important
+    .sn-margin-right
+        padding-right: 0 !important
+    /*escritorio*/
+@media screen and (max-width: 992px)
+    html
+        body
+            margin: 0
+            padding: 0
+    .content-meno-prsopectos, .content-header-prospectos
+        zoom: 0
+    .btn-menu-prospecto
+        margin: 0
+        margin-left: 0
+        h4
+            font-size: 14px
+            margin: 5px
+            padding: 0
+    .conent-btn-menu-vendedor
+        position: absolute
+        display: flex
+        left: 0
+    .MenuPrincipalEAT
+        position: absolute
+        top: 0
+        left: -100%
+        width: 70%
+        height: 100%
+        bottom: 0
+        z-index: 5
+        padding: 0
+        flex-flow: column wrap
+        justify-content: space-around
+        transition: .3s
+    .MenuPrincipalEAT.active
+        left: 0
+    .btn-cerrar-sesion
+        button
+            width: 100%
+            text-align: left
+    .btn-menu-vendedor
+        padding: 10px
+        padding-left: 15px
+        font-size: 18px
+        button
+            margin: 0
+            padding: 0
+        &:hover
+            background: $rverde
+            cursor: pointer
+        .icono-menu-principal-vendedor
+            color: $gris
+        .texto-menu-vendedor
+            color: $white
+            margin-left: 10px
+    .cabezera-red7-vendedor
+        display: flex
+    .content-menu-vendedor-items
+        display: flex
+        flex-flow: column wrap
+        justify-content: space-around
+    .items-oportunidades
+        margin-left: 5px
+        margin-right: 5px
+    .content-descripcion-oportunidad
+        width: 60%
+    .content-descripcion-oportunidad-guardar
+        width: 70%
+    .content-boteBasura-oportunidad
+        width: 1%
+        margin-right: 15px
+    .content-costo-oportunidad
+        width: 20%
+    .elementos-oportunidades-cotizacion
+        height: 30px
+        margin-top: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        input
+            width: 100%
+            height: 100%
+        label
+            text-align: center
+            width: 10px
+            height: 10px
+            color: white
+            padding: 15px
+    .item-oportunidad
+        width: 100%
+        &:first-child
+            margin-right: 0
+    .content-items-menu-vendedor
+        position: fixed
+        background: red
+        width: 70%
+        height: 200%
+        background: $RazulOscuro-hover
+    .btn-guardar
+        margin-top: 5px
+    .sn-margin-left
+        margin-bottom: 10px
+        padding: 0 !important
+    .sn-margin-right
+        margin-bottom: 10px
+        padding: 0 !important
+@media screen and (max-width: 768px)
+    html
+        body
+            //background: peru
+    .contentInt
+        width: 100%
+    .content-meno-prsopectos, .content-header-prospectos
+        zoom: 0
+    .btn-menu-prospecto
+        margin: 0
+        margin-left: 0
+        h4
+            font-size: 14px
+            margin: 5px
+            padding: 0
+    .content-tabla-prospectos
+        overflow: auto
+@media screen and (max-width: 480px)
+    html
+        body
+            //background: yellow
+    .contentInt
+        width: 100%
+        padding: 10px
+    .btn-menu-prospecto
+        margin: 0
+        padding: 0
+        h4
+            font-size: 14px
+            margin: 5px
+            padding: 0
+    .content-meno-prsopectos, .content-header-prospectos
+        zoom: 0
+    .content-img-personal-vendedor
+        background: $azulOscuro
+        padding: 10px
+        img
+            width: 75px
+            height: 75px
+/* detalleprospectos */
+

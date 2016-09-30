@@ -1,0 +1,158 @@
+@import 'https://fonts.googleapis.com/css?family=Didact+Gothic|Gudea&subset=latin-ext';
+
+#encabezado{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  
+  
+}
+table{
+  width:100%;
+}
+.tablavendedores thead{
+  background-color: #2A6088;
+  color: white ;
+  margin: auto;
+ 
+ 
+ 
+}
+
+.tablavendedores tbody{
+  border-style:solid;
+ border: 10px;
+  
+ 
+}
+ .tablavendedores th {
+    padding: 20px;
+   margin: auto;
+     border: 3px; 
+  border-style:solid;
+  border-color:#2A6088;
+  font-family: 'Gudea', sans-serif;
+   font-style:bold;
+  
+}
+.tablavendedores tbody td  {
+  padding: 25px;
+  margin: auto;
+  border: 3px; 
+  border-style:solid;
+  border-color:#2A6088;
+  font-family: 'Gudea', sans-serif;
+
+
+ 
+}
+#campoprospectos #tablavendedorpro_paginate{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
+
+  color:#2A6088;
+}
+.contenedorvendedores{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 15px;
+  font-style: bold;
+   padding 20px;
+}
+.contenedorvendedores #tablaven_paginate{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
+
+  color:#2A6088;
+}
+#opciones{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+#personal{
+  margin: auto;
+  display: inline-block;
+}
+#fotoven{
+
+  display: inline-block;
+}
+
+#ajustes{
+ 
+}
+
+#navlist { padding: 3px 0px;
+border-bottom: 1px solid #778;
+font: bold 16px Verdana, sans-serif; }
+
+#navlist li { list-style: none; display: inline; margin-left:10px;}
+
+#navlist li a { padding: 3px 1em;
+border: 1px solid #778; border-bottom: none;
+background: #DDE; text-decoration: none; }
+
+#navlist li a:link { color: #448; }
+#navlist li a:hover {color: #000; background: #AAE; border-color: #227; }
+#navlist li a#current { background: #AAE; }
+
+.contentGraph {
+  background: #fafafa;
+  box-shadow: 2px 2px 1px #000;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+  padding: 35px; }
+  
+
+
+
+.vista {
+  background: #fff;
+  box-shadow: 5px 5px 1px #A4A4A4;
+  border-style: solid;
+  border-color: #B2B2B2;
+  border-width: 1px;
+ 
+  margin-top:20px;
+}
+#encabezado{
+  align-items:center;
+  align-content:center;
+  
+  
+}
+
+
+table tr{
+  border: 10px;
+}
+@media only screen and (max-width: 900px) {
+  #menu{
+    display: flex;
+   flex-direction: column;
+    justify-content: center;
+   
+  }
+  
+  #encabezado{
+  display: flex;
+  flex-direction:column;
+  align-content: center;
+  
+}
+ 
+ 
+  
+}
+
+    

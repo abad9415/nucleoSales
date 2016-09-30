@@ -1,0 +1,35 @@
+
+
+
+#navlist { padding: 3px 0px;
+border-bottom: 1px solid #778;
+font: bold 16px Verdana, sans-serif; }
+
+#navlist li { list-style: none; display: inline; margin-left:10px;}
+
+#navlist li a { padding: 3px 1em;
+border: 1px solid #778; border-bottom: none;
+background: #DDE; text-decoration: none; }
+
+#navlist li a:link { color: #448; }
+#navlist li a:hover {color: #000; background: #AAE; border-color: #227; }
+#navlist li a#current { background: #AAE; }
+
+.contentList {
+  background: #fafafa;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 2px 2px 1px #000;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+  padding: 35px; }
+.contentListV {
+  background: #fff;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 2px 2px 1px #000;
+  border-style: solid;
+  border-color: #000;
+  border-width: 1px;
+  padding: 35px; }
