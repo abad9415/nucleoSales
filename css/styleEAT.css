@@ -231,7 +231,7 @@ html {
   border: none; }
 
 .MenuPrincipalEAT {
-  z-index: 3; }
+  z-index: 4; }
 
 .cabezera-red7-vendedor {
   display: none;
@@ -328,6 +328,11 @@ html {
   margin-bottom: 15px; }
 
 /*ESTILOS CITAS */
+/* ESTILOS CONFIGURACION COTIZACION */
+.form-config-cotizacion textarea {
+  border: solid #197CDF 1.5px; }
+
+/* ESTILOS CONFIGURACION COTIZACION */
 /* COMPONENTES      COMPONENTES       COMPONENTES */
 .circulo-material {
   border-radius: 50%;
@@ -463,7 +468,7 @@ html {
     width: 70%;
     height: 100%;
     bottom: 0;
-    z-index: 5;
+    z-index: 6;
     padding: 0;
     flex-flow: column wrap;
     justify-content: space-around;

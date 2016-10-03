@@ -10,9 +10,6 @@ if(!isset($_SESSION['session']))
         
    }
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -32,65 +29,76 @@ if(!isset($_SESSION['session']))
 <body>
 	
 	<div  class="container">
- 
-
-		<div class="row " id="encabezado">
-         <div id="fotoven">
-						<img height="100px" src="../../recursos/imagenes/perfil.jpg" alt="..." class="img-circle">
-         </div>
-         <div id="personal">
-    					 <h2> <span class="label label-primary">Jefe de Ventas </span></h2>
-         </div>
-			<div id="ajustes" class="btn-group">
-				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Opciones <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Editar informacion</a></li>
-											<li><a  id="cerrar" href="#">Cerrar Sesion</a></li>
-										</ul>
-								</div>
+		<div class="conent-btn-menu-vendedor circuloEAT-ch" id="btnMostrarMenuVendedor">
+					<span class="icon-menu"></span>
 			</div>
-		
-        <br>
-		<div class="row">
-			<div id="menu" >
-				<ul class="nav nav-tabs nav-justified">
-					<li role="presentation">
-						<a   role="button" id= "vendedores" ><span  class="icon iconsize icon-user-tie "></span> Vendedor</a>
-					</li>
-					<li role="presentation">
-						<a  role="button" id="funnel"><span  class="icon iconsize icon-filter "></span>  Oportunidades</a>
-					</li>
-					<li role="presentation">
-						<a  role="button" id="Departamento"><span  class="icon iconsize icon-pie-chart  "></span> Departamento</a>
-					</li>
+		<div class="cabezera-red7-vendedor">
+		 		<img src="http://red-7.com.mx/images/icon.png">
+		 </div>
+	 <div class="MenuPrincipalEAT" id="ConentenMenuPrincipalVendedor">
+		 	<div class="content-items-menu-vendedor">
+								<div class="row" id="encabezado">
+									 <div id="fotoven">
+											<img height="100px" src="../../recursos/imagenes/perfil.jpg" alt="..." class="img-circle">
+									 </div>
+									 <div id="personal">
+												 <h2> <span class="label label-primary">Jefe de Ventas </span></h2>
+									 </div>
+										<div id="ajustes" class="btn-group">
+													<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Opciones <span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu">
+														<li><a href="#">Editar informacion</a></li>
+														<li><a  id="cerrar" href="#">Cerrar Sesion</a></li>
+													</ul>
+										</div>
+							</div> 
+		 
+		 
+		<!--  MENU PRINCIPAL  -->
+		 	<div class="content-menu-vendedor-items">
+					<span id="vendedores" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-user-tie icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Vendedor</span>
+						</div>
+					</span>
 				
-					<li role="presentation">
-						<a  id="ventasO" class="" role="button"><span class="icon iconsize icon-money "></span> Ventas</a>
-					</li>
-						<li role="presentation">
-						<a  class="" role="button" id="Calendar"><span  class="icon iconsize icon-calendar "></span> Calendario</a>
-					</li>
+					<span id="funnel" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-filter icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Oportunidades</span>
+						</div>
+					</span>
 				
-					<li role="presentation">
-						<a  class="" role="button" id="Metas"><span  class="icon iconsize icon-trophy2 "></span> Metas</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		
-		<div id="content" >
-			
-		</div>
-		
+					<span id="Departamento" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-pie-chart icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Departamento</span>
+						</div>
+					</span>
 				
+					<span id="ventasO" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-money icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Ventas</span>
+						</div>
+					</span>	
+				
+					<span id="Calendar" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-calendar icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Calendario</span>
+						</div>
+					</span>
+				
+					<span id="Metas" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-trophy2 icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Metas</span>
+						</div>
+					</span>
+		  </div>
+		 </div>
+		<!--  /MENU PRINCIPAL  -->
+	 </div>
+		<div id="content" ></div>
 		
-		
-        
 	</div>
-
-
-</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="../../js/jefeventas/menujefeventas.js"></script>
@@ -103,7 +111,35 @@ if(!isset($_SESSION['session']))
 	<script src='../../views/Calendario/js/moment.min.js'></script>
 	<script src='../../views/Calendario/js/fullcalendar.min.js'></script>
 	<script src="../../js/lang-es.js"></script>
+	<script src="../../recursos/hammer/hammer.min.js"></script>
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script>
+			  var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
+      var $menu = document.getElementById('ConentenMenuPrincipalVendedor');
+
+      $burguerButton.addEventListener('touchstart', toggleMenu);
+
+      function toggleMenu(){
+        $menu.classList.toggle('active')
+      };
+		 
+		 $(".btn-menu-vendedor").click(function(){
+			 hideMenu();
+		 });
+		 function hideMenu(){
+			 $( "#ConentenMenuPrincipalVendedor" ).removeClass( "active" );
+		 }
+		  function showMenu(){
+			 $( "#ConentenMenuPrincipalVendedor" ).addClass( "active" );
+		 }
+		  // Gestos touch
+      var $body = document.querySelector("html")
+      var gestos = new Hammer($body);
+			
+      gestos.on('swipeleft', hideMenu);
+      gestos.on('swiperight', showMenu);
+	</script>
+</body>
 </html>
 
 	

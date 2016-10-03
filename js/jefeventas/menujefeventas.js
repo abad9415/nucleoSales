@@ -1,7 +1,7 @@
 $(document).ready(function() {
 var mediaquery = window.matchMedia("(max-width: 900px)");
 if (mediaquery.matches) {
-   alert("pantalla chica");
+  // alert("pantalla chica");
 } else {
  //alert("pantalla grande");
 }

@@ -55,7 +55,8 @@ while($row = $datosVendedorRow->fetch_assoc()) {
 	 	<link rel="stylesheet" href="../css/fontastic/styles.css">
 		<link rel="stylesheet" href="../css/reportes/reportescss.css">
 	<script src="https://use.fontawesome.com/27f2685670.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.7/hammer.min.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.7/hammer.min.js"></script> -->
+	<script src="../recursos/hammer/hammer.min.js"></script>
 
 
 	<link href="/recursos/colores/jquery.colorpanel.css" rel="stylesheet">
@@ -63,9 +64,6 @@ while($row = $datosVendedorRow->fetch_assoc()) {
     <link href="Calendario/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Core JavaScript -->
     <script src="Calendario/js/bootstrap.min.js"></script>
-
-		
-    <script src="recursos/alertas/jquery.freeow.js"></script>
 	  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRxC6Y4f-j6nECyHWigtBATtJyXyha-XU&libraries=adsense&sensor=true&language=es"></script>
  
 		<!-- FullCalendar -->
@@ -82,7 +80,6 @@ while($row = $datosVendedorRow->fetch_assoc()) {
 		<script type="text/javascript" src="../js/exporting.js"></script>
 		<script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
 		<link rel="stylesheet" type="text/css" href="../node_modules/sweetalert/dist/sweetalert.css">
-  	
 </head>
 
  <body>
@@ -154,8 +151,7 @@ while($row = $datosVendedorRow->fetch_assoc()) {
 </div>
 		<div id="content" ></div>
 	</div>
- 
-	 <script>
+	 <script>	
 		 var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
       var $menu = document.getElementById('ConentenMenuPrincipalVendedor');
 

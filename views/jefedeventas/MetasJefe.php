@@ -3,9 +3,11 @@
   //requerimos de la clase prospectos que esta en el siguiente archivo
   require '../../lib/metodos_jefeventas.php';
   //Instaciamos la clase prospectos
+	session_start();
   $vendedor = new jefeventas($datosConexionBD);
   $consultarvendedor= $vendedor->selectVendedores();
 	$idJefe=$_SESSION['idvendedor'];
+
 ?>
 
 <div class=row>
@@ -216,6 +218,7 @@
 						}
 					});
   $("#idActividad").load( "../../views/jefedeventas/GraficaMetasJefe.php?variable1="+aux+"&variable2="+anio);
+		
 function izquirda() {
   aux=aux-1;
   if(aux<1){
@@ -268,15 +271,12 @@ function izquirda() {
     $("#idActividad").load( "../../views/jefedeventas/GraficaMetasJefe.php?variable1="+aux+"&variable2="+anio);
 }
 		
-		$("#CrearMeta").submit(function(e) {
-				alert($("#Vendedor").val())
-				setTimeout ("$('#content').load( '../../views/jefedeventas/MetasJefe.php' );", 5000); 
-		}
+
 		
 		$("#CrearMeta").submit(function(e) {
 			$.ajax({
    			type: "POST",
-   			url: "../../lib/insertMetas.php",
+   			url: "../../lib/insertMetasJefe.php",
    			cache: false,
    			data: "vendedor=" +"<?php echo $idJefe?>"+
    						'&ventas=' +$("#Ventas").val() +
@@ -293,6 +293,30 @@ function izquirda() {
 			 
 			
    	});
+		$("#CrearMetaV").submit(function(e) {
+			alert(
+					 
+				);
+			
+			$.ajax({
+   			type: "POST",
+   			url: "../../lib/insertMetasJefe.php",
+   			cache: false,
+   			data: "vendedor=" +$("#Vendedor").val()+
+   						'&ventas=' +$("#VentasV").val() +
+   						'&prospectos=' + $("#ProspectoV").val()+
+				 			'&citas='+ $("#CitasV").val()+
+				 			'&fecha=' + $("#AnioV").val()+'-'+$("#MesV").val()+'-01'+
+							'&Jefe='+1,
+
+   		}).done(function(result) {
+				$('#MetasVendedor').modal('hide');
+			setTimeout ("$('#content').load( '../../views/jefedeventas/MetasJefe.php' );", 500); 
+   		});
+			return false;
+			
+			
+		});
   
 		
 

@@ -15,7 +15,7 @@ $("#nuevoprospecto").click(function(){
 });
 
 
-		$('tbody').find('tr').click(function(e){
+		$('tbody').find('tr').find("td:first").click(function(e){
 $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p').text());
 
  
@@ -24,6 +24,11 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 	
 });
 		
+
+	$('tbody').find('tr').find("td:last").find("span").click(function(e){
+			
+			alert("Editar");
+		});
 		
 		
 		

@@ -153,8 +153,12 @@ $origenesProspectos = $prospectos->obtenerOrigenes();
 					
            <div class="content-info-prospecto">
 						   <div class="content-nombre-opciones-prospecto">
-									  <h2 class="nombre-prospecto" id="nombreEmpresaMaster"><?=$nombreEmpresa;?></h2>
-                    <span class="btn-modificar-prospecto icon-pencil colorEmpresaEAT" id="modificarEsteProspecto"></span>
+								 		<div class="nombre-empresa-prsopectos">
+												 <h2 class="nombre-prospecto" id="nombreEmpresaMaster"><?=$nombreEmpresa;?></h2>
+								 		</div>
+									 	<div class="icon-pencil-modificar-prospecto">
+                    		<span class="btn-modificar-prospecto icon-pencil colorEmpresaEAT" id="modificarEsteProspecto"></span>
+										</div>
                </div>
 						 
 						 	 <div class="cajaDeEstadoyMas">

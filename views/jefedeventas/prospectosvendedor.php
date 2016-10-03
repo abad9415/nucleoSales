@@ -20,7 +20,7 @@
 <script>
 
 
-$('tbody').find('tr').find("td:last").find("input").click(function(e){
+$('tbody').find('tr').find("td:last").find("span").click(function(e){
 	
 var nomprospecto=$(this).parents('tr').find("#nombre").text();
 var varprospecto=$(this).parents('tr').find("td:first").text()
@@ -91,19 +91,21 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Empresa</th>
-								<th>Ciudad</th>
-								<th>Opciones</th>
+								<th >Empresa</th>
+								<th >Ciudad</th>
+								<th >Opciones</th>
 								
 							
 							</tr>
 						</thead>
 					<tbody>
 						<?php
+						
+						
            while($row = $consultarProspectos->fetch_assoc()) { ?>
 							<tr>
 								<td >
-										<div class="circulo-material id-prospecto-paginar-prospectos" style="background-color: <?=$row['color'];?>">
+										<div class="circulo id-prospecto-paginar-prospectos" style="background-color: <?=$row['color'];?>">
 											<p>
 											<?= $row['idprospecto']; ?>
 									</p>
@@ -117,7 +119,9 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 									<?=$row['ciudad'];?>
 								</td>
 							<td >
-							<input type="button" id="change" value="Opciones" >
+						 								<div class="icon-pencil-modificar-prospecto">
+                    								<span class="btn-modificar-prospecto icon-group2 colorEmpresaEAT" id="span-cambiar-vendedor" style="width:30px"></span>
+																</div>
 								
 							</td>
 							</tr>

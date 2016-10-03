@@ -7,8 +7,37 @@
   
   
 }
+
+
+
+
+.circulo {
+  margin:auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+
+}
+
+
+  .circulo:hover {
+    opacity: 0.8;
+    cursor: pointer; }
+
+.span-cambiar-vendedor{
+width:300px;
+}
+
 table{
   width:100%;
+
+
+}
+
+th {
+  text-align: center;
+  
 }
 .tablavendedores thead{
   background-color: #2A6088;
@@ -21,22 +50,25 @@ table{
 
 .tablavendedores tbody{
   border-style:solid;
- border: 10px;
+  border: 10px;
   
  
 }
  .tablavendedores th {
-    padding: 20px;
-   margin: auto;
+    padding: 15px;
+    margin: 15px;
      border: 3px; 
   border-style:solid;
   border-color:#2A6088;
   font-family: 'Gudea', sans-serif;
    font-style:bold;
+
+   
   
 }
 .tablavendedores tbody td  {
-  padding: 25px;
+  text-align: center;
+  padding: 20px;
   margin: auto;
   border: 3px; 
   border-style:solid;
@@ -151,7 +183,26 @@ table tr{
   
 }
  
- 
+ table{
+  width:100%;
+   font-size: smaller;
+}
+  .tablavendedores tbody td  {
+  padding: 15px;
+  margin: auto;
+  border: 3px; 
+  border-style:solid;
+  border-color:#2A6088;
+  font-family: 'Gudea', sans-serif;
+    
+  }
+  
+   .tablavendedores th {
+   
+
+   
+  
+}
   
 }
 

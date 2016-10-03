@@ -57,17 +57,24 @@
 														
 															<?php
           											     while($row = $consultarvendedor->fetch_assoc()) { ?>
-													<td>
-                         			
-																		<p id="<?= $row['idvendedor']; ?>" ><?= $row['idvendedor']; ?></p>
-															
-														</td>
+								
+																<td>
+																		<div class="circulo id-prospecto-paginar-prospectos" style="background-color:#2A6088" >
+
+																				<p id="<?= $row['idvendedor']; ?>"><?= $row['idvendedor']; ?></p>
+																		</div>
+																</td>
+														
 														 <td><?= $row['nombreusuario']." ".$row['apellidoP']."  ".$row['apellidoM']; ?></td>
                            
                            
 														<td><?= $row['correo']; ?></td>
 														
-														<td><input type="button" value="Editar"></td>
+														<td>
+															 	<div class="icon-pencil-modificar-prospecto">
+                    								<span class="btn-modificar-prospecto icon-pencil colorEmpresaEAT" id="modificarvendedor"></span>
+																</div>
+														</td>
                           </tr>
                           
 															<?php } ?>

@@ -58,41 +58,37 @@ if($actionBtn == 'Guardar'){
 <?php
 }
 ?>
-<form class="row" id="documentoCotizacion">
+<form class="row form-config-cotizacion" id="documentoCotizacion">
 <div class="form-group">
 	<label for="descripcionCot">Descripción / Introducción.</label>
-<textarea name="descripcionCot" id="descripcionCot" class="form-control" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
-	 <?=$descripcionCot;?></textarea>
+<textarea onkeyup="auto_grow(this)" name="descripcionCot" id="descripcionCot" class="form-control"><?=$descripcionCot;?></textarea>
 </div>
 
 <div class="form-group">
 	<label for="caracteristicasCot">Caracteristicas.</label>
-<textarea name="caracteristicasCot" id="caracteristicasCot" class="form-control" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
-	<?=$caracteristicasCot;?></textarea>
+<textarea name="caracteristicasCot" id="caracteristicasCot" class="form-control"><?=$caracteristicasCot;?></textarea>
 </div> 
 
 <div class="form-group">
 	<label for="extrasCot">Extras.</label>
-<textarea name="extrasCot" id="extrasCot" class="form-control" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
-	<?=$extrasCot;?></textarea>
+<textarea name="extrasCot" id="extrasCot" class="form-control"><?=$extrasCot;?></textarea>
 </div>
 
 <div class="form-group">
 	<label for="despedidaCot">Despedida.</label>
-<textarea name="despedidaCot" id="despedidaCot" class="form-control" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
-	<?=$despedidaCot;?></textarea>
+<textarea name="despedidaCot" id="despedidaCot" class="form-control"><?=$despedidaCot;?></textarea>
 </div>
 
 <div class="form-group">
 	<label for="firmaCot">Firma.</label>
-<textarea name="firmaCot" id="firmaCot" class="form-control" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
-	<?=$firmaCot;?></textarea>
+<textarea name="firmaCot" id="firmaCot" class="form-control"><?=$firmaCot;?></textarea>
 </div>
 
-<input type="submit" class="btn btn-default" id="btnActionGeneral" value="<?=$actionBtn;?>">
+<input type="submit" class="btn btn-primary" id="btnActionGeneral" value="<?=$actionBtn;?>">
 </form>
-
+<script src='../../../recursos/autosize-master/dist/autosize.js'></script>
 <script>
+	autosize(document.querySelectorAll('textarea'));
 $(document).ready( function() {
  $("#documentoCotizacion").submit(function(e){
 	 if($("#btnActionGeneral").val()=='Guardar'){
@@ -111,7 +107,8 @@ $(document).ready( function() {
 									'&idconfigCotizacion='+$("#idconfigCotizacion").val()
 
 						}).done(function(result) {
-					alert(result);    
+					//alert(result);
+					swal(result + "!", "", "success")
 						 $("#cargarConfig").load( "../views/prospectos/config/configCotizacion.php" );
 					});
 						return false;

@@ -102,7 +102,7 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                     </div>
 								<div class="form-group">
                         <label for="estadoProspecto">Color</label>
-												<input type="color" id="colorProspecto" value="#197CDF" class="inputEmpresa">
+												<input type="color" id="colorProspecto" value="#197CDF" class="form-control inputEmpresa">
                     </div>
                </div>
                <div class="col-md-4 col-sm-12">
@@ -145,6 +145,7 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
 
                     <label for="cargoContacto">Cargo</label>
                     <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto" required>
+									
                 </div>
 								<input type="hidden" id="cargoContacto" name="cargoContacto" class="form-control">
                 </div>
@@ -152,7 +153,6 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                        <input type="submit" value="Guardar" name="enviar" class="pull-right btn btn-primary" id="btnActionGeneral">
                 </div>
             </div>
-					        
 				</form>
     </div>
 
@@ -160,14 +160,13 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
 
 <script src="../../js/enviarAltaProspectos.js"></script>
 
-
 <script>
+	
+	
 	var tipousuario=<?php $idjefeventas ?>;
 	
  $("#cerrarAltaProspectos").click(function(){
 	 	//alert(tipousuario);
 			 $("#content").load( "../../views/prospectos/vistaProspectos.php" );
 	  });
-	
-
 </script>
