@@ -23,6 +23,7 @@ if(!isset($_SESSION['session']))
 	<link rel="stylesheet" type="text/css" href="../../css/stylejefeventas.css">
 	<link rel="stylesheet" href="../../css/styleEAT.css">
 	<link href='../../views/Calendario/css/fullcalendar.css' rel='stylesheet' />
+	<link rel="stylesheet" type="text/css" href="../../node_modules/sweetalert/dist/sweetalert.css">
 	</head>
 
 
@@ -92,6 +93,12 @@ if(!isset($_SESSION['session']))
 							<span  class="icon iconsize icon-trophy2 icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Metas</span>
 						</div>
 					</span>
+				
+					<span id="Comisiones" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-percent icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Comisiones</span>
+						</div>
+					</span>
 		  </div>
 		 </div>
 		<!--  /MENU PRINCIPAL  -->
@@ -113,6 +120,7 @@ if(!isset($_SESSION['session']))
 	<script src="../../js/lang-es.js"></script>
 	<script src="../../recursos/hammer/hammer.min.js"></script>
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
 	<script>
 			  var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
       var $menu = document.getElementById('ConentenMenuPrincipalVendedor');

@@ -363,6 +363,9 @@ html {
 .row {
   padding: 15px; }
 
+.tableEAT thead tr th {
+  text-align: left; }
+
 /* COMPONENTES      COMPONENTES       COMPONENTES */
 @media screen and (min-width: 993px) {
   .btn-menu-vendedor {

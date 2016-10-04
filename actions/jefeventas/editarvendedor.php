@@ -20,5 +20,6 @@ $vendedor->colonia= $_POST['colonia'];
 $vendedor->ciudad= $_POST['ciudad'];
 $vendedor->user= $_POST['user'];
 $vendedor->password= $_POST['password'];
+$vendedor->editarvendedor();
 
 ?>

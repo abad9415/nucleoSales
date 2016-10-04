@@ -10,7 +10,6 @@ if (mediaquery.matches) {
 	});
 
 	$("#vendedores").click(function() {
-		
   $("#content").load("../../views/jefedeventas/jefevendedor.php");
 		
 
@@ -55,5 +54,8 @@ if (mediaquery.matches) {
      	 window.location="../../lib/cerrarsesion.php";
 		});
 	
+		$("#Comisiones").click(function(){
+        $("#content").load( "comisiones/vistaComisiones.php" );      
+	});	
 
 });
