@@ -1,6 +1,7 @@
 <?php
-
-
+session_start();
+	$idvendedor=$_SESSION['idvendedor'];
+	
 	$mes = $_GET["variable1"];
 	$anio = $_GET["variable2"];
 	include '../../conexionBD.php';
@@ -8,7 +9,7 @@
   $Setapas = new Setapas($datosConexionBD);
   $CGanado = $Setapas->CGanado($mes,$anio);  
   $ventasM=$CGanado->fetch_assoc();
-	$CVentas = $Setapas->CVentas($mes,$anio);  
+	$CVentas = $Setapas->CVentas($mes,$anio,$idvendedor);  
   $ventasV=$CVentas->fetch_assoc();
 	$Ccitas = $Setapas->Ccitas($mes,$anio);  
   $citasV=$Ccitas->fetch_assoc();
@@ -76,7 +77,7 @@ switch ($aux) {
 	return $Nmes;     
 }
 
-$idvendedor=$_SESSION['idvendedor'];
+
 
 ?>
 <script type="text/javascript">
@@ -238,17 +239,26 @@ $idvendedor=$_SESSION['idvendedor'];
 
 	
 
-<div id="containMetas" ></div>
+<div class="col-md-12"  id="containMetas" ></div>
 
 <form action="../../lib/insertMetas.php" method="post">
 <div class="col-md-12" id="send">
-  <div class=col-md-3>
-  <input type="text" name="ventas" id="ventas" class="form-control" placeholder="Ventas a cumplir"  >
+	<div class=col-md-1>
+		<label >Ventas: </label>
+	</div>
+  <div class=col-md-2>
+		<input type="text" name="ventas" id="ventas" class="form-control" placeholder="Ventas a cumplir"  >
   </div>
-  <div class=col-md-3>
+	<div class=col-md-1>
+		<label >Prospectos: </label>
+	</div>
+  <div class=col-md-2>
     <input type="text" name="prospectos" id="prospectos" class="form-control" placeholder="Prospectos a cumplir"  >
   </div>
-  <div class=col-md-3>
+	<div class=col-md-1>
+		<label >Citas: </label>
+	</div>
+  <div class=col-md-2>
     <input type="text" name="citas" id="citas" class="form-control" placeholder="Citas a cumplir"  >
 		<input type="hidden" name="vendedor" value="<?php echo $idvendedor;?>">
 		<input type="hidden" name="fecha" value="<?php echo $anio."-".$mes."-01";?>">

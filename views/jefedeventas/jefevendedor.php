@@ -34,7 +34,7 @@
 
                 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="icon-plus"></span> Vendedor</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalnewvendedor"><span class="icon-plus"></span> Vendedor</button>
 <button type="button" class="btn btn-success"   id="nuevoprospecto" ><span class="icon-plus"></span> Prospecto</button>
 
 
@@ -72,7 +72,7 @@
 														
 														<td>
 															 	<div class="icon-pencil-modificar-prospecto">
-                    								<span class="btn-modificar-prospecto icon-pencil colorEmpresaEAT" id="modificarvendedor"></span>
+                    								<span class="btn-modificar-prospecto icon-pencil colorEmpresaEAT" id="modificarvendedor" ></span>
 																</div>
 														</td>
                           </tr>
@@ -84,7 +84,7 @@
 	
 </div>
 
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalnewvendedor">
   		<div class="modal-dialog modal-lg" role="document">
     		<div class="modal-content">
 					<div class="modal-header">
@@ -146,7 +146,7 @@
             					<input type="text" name="colonia" id="colonia" class="form-control">
 											</div>
 											<div class="col-lg-3">
-            					<label for="recipient-name" class="control-label">Codigo postal</label>
+            					<label for="recipient-name" class="control-label">Ciudad</label>
             					<input type="text" name="ciudad" id="ciudad" class="form-control" >
 											</div>
 										</div>
@@ -184,7 +184,34 @@
     		</div>
   		</div>
 
+<!--Modal Editar -->
 
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modalEditarVendedor">
+  		<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+					<div class="modal-header">
+       			 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+       			 <h3 class="modal-title modalrenglones" id="exampleModalLabel">Editar Vendedor</h3>
+      		</div>
+			<form  id="formalteditvendedor" class="formulariobody" >
+				<div id="cuerpobody1" class="modal-body ">
+				
+				</div>
+			
+				 <div class="modal-footer modalrenglones">
+       								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        							<input type="button"  value="guardar"  id="enviaredit" class="btn" data-dismiss="modal">
+     								 </div>
+							
+							
+					</form>
+				
+
+
+    </div>
+    		</div>
+  		</div>
+<!--Modal Editar-->
 
 
 	

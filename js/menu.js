@@ -39,9 +39,7 @@ $(document).ready(function(){
 	$("#configGeneral").click(function(){
         $("#content").load( "../views/prospectos/configVendedor.php" );
       
-	});
-	
-	
+	});	
 });
 
   

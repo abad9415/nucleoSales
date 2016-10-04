@@ -332,11 +332,10 @@ if(!isset($_SESSION['idvendedor']))
 									return $resultado;
 			}	
 			 
-			 			 public function CVentas($mes,$anio){
+			 			 public function CVentas($mes,$anio,$idvendedor){
 				 /* conectamos a la bd */
             $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
 						/* check connection */
-						$idvendedor=$_SESSION['idvendedor'];
 					  if (mysqli_connect_errno()) {
 							printf("Error de conexión: %s\n", mysqli_connect_error());
 							exit();

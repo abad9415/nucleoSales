@@ -26,8 +26,23 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 		
 
 	$('tbody').find('tr').find("td:last").find("span").click(function(e){
+			var varprospecto=$(this).parents('tr').find("td:first").text()
+		
+		
+		
+			$.ajax({
+															type: "POST",
+															url: "../../actions/jefeventas/Informacionvendedor.php",
+															cache: false,
+															data: "idven="+varprospecto,
+															success: function(data){
+															
+																$("#cuerpobody1").html(data);
+																$("#modalEditarVendedor").modal("toggle");
+													
+															}
+															});
 			
-			alert("Editar");
 		});
 		
 		
@@ -42,7 +57,6 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formaltvendedor").serialize(),
 															success: function(data){
-																alert("enviado");
 																	location.reload();
 															}
 															});
@@ -52,6 +66,23 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 			
 			 });
 		
+		 $(document).on("click", "#enviaredit",function(e) {
+			alert("etoy dnetro");
+			
+				 $.ajax({
+															type: "POST",
+															url: "../../actions/jefeventas/editarvendedor.php",
+															cache: false,
+															data: $("#formalteditvendedor").serialize(),
+															success: function(data){
+																	alert (data);
+															}
+															});
+			
+			
+			
+			
+			 });
 		
 	
   });

@@ -294,9 +294,6 @@ function izquirda() {
 			
    	});
 		$("#CrearMetaV").submit(function(e) {
-			alert(
-					 
-				);
 			
 			$.ajax({
    			type: "POST",
@@ -306,8 +303,7 @@ function izquirda() {
    						'&ventas=' +$("#VentasV").val() +
    						'&prospectos=' + $("#ProspectoV").val()+
 				 			'&citas='+ $("#CitasV").val()+
-				 			'&fecha=' + $("#AnioV").val()+'-'+$("#MesV").val()+'-01'+
-							'&Jefe='+1,
+				 			'&fecha=' + $("#AnioV").val()+'-'+$("#MesV").val()+'-01',
 
    		}).done(function(result) {
 				$('#MetasVendedor').modal('hide');

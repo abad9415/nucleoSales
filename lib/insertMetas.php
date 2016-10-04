@@ -14,7 +14,7 @@ if ($_POST['vendedor']!="" &$_POST['ventas']!="" &&$_POST['prospectos']!="" &&$_
 	$fechs = explode("-", $fecha);
 	$entrar=False;
 
-  $CVentas = $Setapas->CVentas($fechs[1],$fechs[0]);  
+  $CVentas = $Setapas->CVentas($fechs[1],$fechs[0],$idvendedor);  
 	$ventasV=$CVentas->fetch_assoc();
   
 	if(intval($ventasV['Ventas'])==0&&intval($ventasV['Prospectos'])==0&&intval($ventasV['Citas'])==0){
