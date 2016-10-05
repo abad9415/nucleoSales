@@ -16,6 +16,7 @@ class jefeventas{
 	var $idprospecto;
 	var $descripcionComision;
 	var $comision;
+	var $idComision;
 
 
 	
@@ -434,6 +435,23 @@ function __construct($datosConexionBD){
 						}
 						$mysqli->close();//cierra la conexion con la BD
 									return $resultado;
+		}
+	public function cambiarComisionXvendedor(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "UPDATE configComisiones 
+											SET comision='".$this->comision."'
+													Where idcomision=".$this->idComision;//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return "Cambio Exitoso";
 		}
 	######################## 	/C	O	M	I	S	I	O	N	E	S     /C	O	M	I	S	I	O	N	E	S   /C	O	M	I	S	I	O	N	E	S ######################
 	

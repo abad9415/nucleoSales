@@ -67,7 +67,6 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 			 });
 		
 		 $(document).on("click", "#enviaredit",function(e) {
-			alert("etoy dnetro");
 			
 				 $.ajax({
 															type: "POST",
@@ -75,11 +74,11 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formalteditvendedor").serialize(),
 															success: function(data){
-																	alert (data);
+																
 															}
 															});
-			
-			
+															//location.reload();
+											 $("#content").load("../../views/jefedeventas/jefevendedor.php");
 			
 			
 			 });

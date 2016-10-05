@@ -366,6 +366,24 @@ html {
 .tableEAT thead tr th {
   text-align: left; }
 
+.inputDisfrasadoComision {
+  width: 60px;
+  border: none;
+  border-bottom: solid 1px #cacaca;
+  background: rgba(254, 254, 254, 0); }
+  .inputDisfrasadoComision:focus {
+    outline: 0px; }
+
+.inpu-submit-escondido {
+  background: none;
+  border: none;
+  width: 1px;
+  cursor: auto; }
+  .inpu-submit-escondido:hover {
+    cursor: auto; }
+  .inpu-submit-escondido:focus {
+    outline: 0px; }
+
 /* COMPONENTES      COMPONENTES       COMPONENTES */
 @media screen and (min-width: 993px) {
   .btn-menu-vendedor {

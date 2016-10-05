@@ -34,7 +34,7 @@ if(!isset($_SESSION['session']))
 					<span class="icon-menu"></span>
 			</div>
 		<div class="cabezera-red7-vendedor">
-		 		<img src="http://red-7.com.mx/images/icon.png">
+		 		<img src="../../recursos/imagenes/logred2.jpg">
 		 </div>
 	 <div class="MenuPrincipalEAT" id="ConentenMenuPrincipalVendedor">
 		 	<div class="content-items-menu-vendedor">
