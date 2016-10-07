@@ -14,6 +14,21 @@ $("#nuevoprospecto").click(function(){
 	
 });
 
+		
+		
+		$("#nuevoven").click(function(){
+
+			$("#modalnewvendedor").modal("toggle");
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		$('tbody').find('tr').find("td:first").click(function(e){
 $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p').text());
@@ -48,8 +63,8 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 		
 		
 		
-	  $(document).on("click", "#enviar",function(e) {
-			
+	  $(document).on("click","#enviar",function(e) {
+			alert("envio");
 			
 				 $.ajax({
 															type: "POST",
@@ -57,11 +72,15 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formaltvendedor").serialize(),
 															success: function(data){
-																	location.reload();
+															
+																	//alert("guardado");
+																	
+													
 															}
 															});
+			swal("Guardado!", "", "success")
 			
-			
+			location.reload();
 			
 			
 			 });
@@ -74,11 +93,12 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formalteditvendedor").serialize(),
 															success: function(data){
-																
+																	swal("Modificado!", "", "success")
+																	location.reload();
 															}
 															});
-															//location.reload();
-											 $("#content").load("../../views/jefedeventas/jefevendedor.php");
+														
+											
 			
 			
 			 });

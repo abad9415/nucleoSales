@@ -48,6 +48,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $idContacto;
 			var $costoInstalacion;
 			var $periodosPagos;
+			var $comision;
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -398,7 +399,6 @@ if(!isset($_SESSION['idvendedor']))
 			
 			 public function altaOportunidad(){
 						$fechaSistema = date("Y-m-d");
-					//$idvendedor=$_SESSION['idvendedor'];
             /* conectamos a la bd */
             $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
 						/* check connection */
@@ -417,7 +417,8 @@ if(!isset($_SESSION['idvendedor']))
 						idetapa,
 						idcontacto,
 						costoInstalacion,
-						fechadeetapa)
+						fechadeetapa,
+						comision)
 						VALUES (NULL,
 						'".$this->descripcionOportunidad."',
 						'".$this->periodosPagos."',
@@ -428,7 +429,8 @@ if(!isset($_SESSION['idvendedor']))
 						'".$this->etapaOportunidad."',
 						'".$this->idContacto."',
 						'".$this->costoInstalacion."',
-						'".$fechaSistema."')";
+						'".$fechaSistema."',
+						'".$this->comision."')";
 					$resultado=$mysqli->query($query);
 					if (!$resultado) {
 						 return (printf ("Errormessage: %s\n", $mysqli->error));
@@ -583,7 +585,8 @@ if(!isset($_SESSION['idvendedor']))
 										idmoneda = '".$this->monedaOportunidad."', 
 										idcontacto = '".$this->idContacto."', 
 										costoInstalacion = '".$this->costoInstalacion."', 
-										idetapa = '".$this->etapaOportunidad."'
+										idetapa = '".$this->etapaOportunidad."',
+										comision = '".$this->comision."'
 									WHERE idoportunidad = '".$this->idOportunidad."' ";
 				
 						$resultado = $mysqli->query($query);
@@ -808,7 +811,24 @@ if(!isset($_SESSION['idvendedor']))
 					}
 				}
 			
-			
+			/*COMISIONES OPORTUNIDADES*/
+			public function consultarcomisionXidVendedor(){
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT * FROM configComisiones WHERE idvendedor ='".$this->idVendedor."'";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+			}
+			/*COMISIONES OPORTUNIDADES*/
 			
     }
 ?>

@@ -34,7 +34,7 @@
 
                 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalnewvendedor"><span class="icon-plus"></span> Vendedor</button>
+<button type="button" class="btn btn-primary" id="nuevoven"><span class="icon-plus"></span> Vendedor</button>
 <button type="button" class="btn btn-success"   id="nuevoprospecto" ><span class="icon-plus"></span> Prospecto</button>
 
 
@@ -166,13 +166,17 @@
             					<label for="recipient-name" class="control-label">Password</label>
             					<input type="text" name="password"  id="password" class="form-control" >
 											</div>
+											<div class="col-lg-3">
+            					<label for="recipient-name" class="control-label">Comision %</label>
+            					<input type="number" step="any" name="comision"  id="comision" class="form-control" >
+											</div>
 						</div >
 							</div>
 							</div>
 			
 				 <div class="modal-footer modalrenglones">
        								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        							<input type="button"  value="guardar"  id="enviar" class="btn" data-dismiss="modal">
+        							<input type="submit"  value="guardar"  id="enviar" class="btn" data-dismiss="modal">
      								 </div>
 							
 							

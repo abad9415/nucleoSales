@@ -28,9 +28,17 @@ while($row = $consultarOportunidadesXprospecto->fetch_assoc()) {
 			$descripcion[$xe] = $row['descripcion'];
 			$monto[$xe] = $row['monto'];
 			$idetapa[$xe] = $row['idetapa'];
+			$comision[$xe] = $row['comision'];
+			$idmoneda[$xe] = $row['idmoneda'];
     $separandoDesc = explode("-SEP-", $descripcion[$xe]);
 	$descripcion[$xe] = $separandoDesc [0];
 	
+			$prospectos->idmoneda=$idmoneda[$xe];
+			$obtenerMonedaXIdRow = $prospectos->obtenerMonedaXId();
+			while($row = $obtenerMonedaXIdRow->fetch_assoc()) {
+							$Moneda[$xe] = $row['nombre'];
+							//$etapaProspecto = $row['idetapa'];
+					 }
 		}
 for($xa=1;$xa<=$xe;$xa++)
 {
@@ -60,6 +68,7 @@ for($xa=1;$xa<=$xe;$xa++)
 							<th>Descripcion</th>
 							<th>Monto</th>
 							<th>Etapa</th>
+							<th>Comision</th>
 						</tr>
 					</thead>
 					<?php
@@ -78,10 +87,13 @@ for($xa=1;$xa<=$xe;$xa++)
 								</div>
 							</td>
 							<td>
-								<?=$monto[$xa]?>
+								<?="<b>".$nombre_format_francais = number_format($monto[$xa], 2, '.', ' ') . "</b> " . $Moneda[$xa]?>
 							</td>
 							<td>
 								<?=$etapaActualFuera[$xa]?>
+							</td>
+							<td>
+								<?= "<b>". $nombre_format_francais = number_format($comision[$xa], 2, '.', ' ') . "</b> " . $Moneda[$xa]?>
 							</td>
 						</tr>
 

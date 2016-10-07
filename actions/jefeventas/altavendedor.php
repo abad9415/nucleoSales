@@ -21,7 +21,17 @@ $vendedor->user= $_POST['user'];
 $vendedor->password= $_POST['password'];
 $vendedor->agregarvendedor();
 
-//header('Location: ../views/jefedeventas/jefeventas.php');
+//PARTE COMISIONES
+$ultimoVendedorRow = $vendedor->ultimoVendedor();
+while($row = $ultimoVendedorRow->fetch_assoc()) {
+          $ultimoVendedor = $row['idvendedor'];
+                }
+$vendedor->idvendedor = $ultimoVendedor;
+$vendedor->comision= $_POST['comision'];
+$vendedor->altaComisionVendedorNuevo();
+//PARTE COMISIONES
+
+header('Location: ../views/jefedeventas/jefeventas.php');
 
 
 ?>

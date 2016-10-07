@@ -32,7 +32,7 @@ var varprospecto=$(this).parents('tr').find("td:first").text()
 	
 	$('tbody').find('tr').find("td:first").click(function(e){
 		
-		alert($(this).find('p').text());
+		//alert($(this).find('p').text());
 $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(this).find('p').text());
 
 });
@@ -50,14 +50,19 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 															cache: false,
 															data: $("#formchange").serialize(),
 				 
-				 
-
-				 
 															success: function(data){
-																alert("enviado");
-													 $("#content").load("../../views/jefedeventas/jefevendedor.php");
+																
+															
+												
 															}
 															});
+	
+		swal({
+  title: "Sweet!",
+  text: "Here's a custom image.",
+  imageUrl: 'thumbs-up.jpg'
+});
+			// $("#content").load("../../views/jefedeventas/jefevendedor.php");
 	});
 	
 	

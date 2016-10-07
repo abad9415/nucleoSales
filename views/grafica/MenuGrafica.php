@@ -4,6 +4,11 @@
     $("#contentG").load("../views/grafica/Botones.php" );
 				
     });
+	$("#comisionGanada").click(function() {
+			
+    $("#contentG").load("../views/grafica/comisiones.php" );
+				
+    });
     $("#Etapas").click(function(){
 			
 			$("#contentG").load( "../views/grafica/funnel.php" );
@@ -25,6 +30,9 @@
 					</li>
           <li role="presentation">
 						<a href="#" class="" role="button" id= "Contacto" ><span  class="icon  icon-pie-chart iconsize"></span> Contacto</a>
+					</li> 
+					<li role="presentation">
+						<a href="#" class="" role="button" id= "comisionGanada" ><span  class="icon  icon-pie-chart iconsize"></span> Comisiones</a>
 					</li>
 				</ul>
 			</div>

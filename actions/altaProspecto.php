@@ -73,7 +73,7 @@ $ultimoIdContactoRow = $contactos->ultimoIdContacto();
 $prospectos->ultimoIdProspecto = $ultimoIdProspecto;
 $prospectos->ultimoIdContacto = $ultimoIdContacto;
 //ya que tenemos las ultimas ids de las dos tablas y las regresamos a lib/prospectos.php, las vaciamos en nuestra tabla contacto-prospecto lo haremos en la clase prospectos
- $prospectos->altaRelacionContactoProspecto();
+ $respuesta = $prospectos->altaRelacionContactoProspecto();
  //$prospectos->altaOportunidad();
 //echo json_encode(array("idProspecto" => $ultimoIdProspecto, "idContacto" => $ultimoIdContacto));
 
