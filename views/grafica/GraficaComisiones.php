@@ -68,7 +68,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '<?php echo "Ventas: "; echo $Anios; ?>'
+            text: '<?php echo "Comisión: "; echo $Anios; ?>'
         },
         
         xAxis: {
@@ -100,7 +100,7 @@ $(function () {
 															
 																$.ajax({
 																type: "POST",
-																url: "../../lib/DatosVentas.php",
+																url: "../../lib/DatosComision.php",
 																cache: false,
 																data: "mes="+mes+"&anio="+anio,
 																	success: function(datos){
@@ -124,10 +124,10 @@ $(function () {
             data: [
         <?php $count=$aux1;
                 while ($count <= $aux2) { 
-                $Ventas = $Setapas->Ventas($count,$Anios); 
+                $Ventas = $Setapas->ComisionVendedor($count,$Anios); 
                 $row=$Ventas->fetch_assoc(); 
         ?>
-                ['<?php echo idMeses($count); ?>', parseFloat('<?php echo $row['monto']+" ";?>')],
+                ['<?php echo idMeses($count); ?>', parseFloat('<?php echo $row['comision']+" ";?>')],
                <?php $count++; }?>
             ],
             dataLabels: {

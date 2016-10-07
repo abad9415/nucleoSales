@@ -50,7 +50,7 @@ switch ($mes) {
 $count=1;
 $Total=0;
 
-    $stmt = $bdd->prepare("SELECT prospecto.nombre, monto
+    $stmt = $bdd->prepare("SELECT prospecto.nombre, comision
                             FROM etapadeventa
                             INNER JOIN oportunidad ON etapadeventa.idetapa = oportunidad.idetapa
                             INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto
@@ -65,7 +65,7 @@ $Total=0;
              <tr>
                 <th></th>
                 <th>Nombre Prospecto</th>
-							 	<th>Monto</th>
+							 	<th>Comision</th>
               </tr>
            </thead>";
     echo "<tr>";
@@ -76,7 +76,7 @@ $Total=0;
     echo $row['nombre'];
     echo "</td></b>";
     echo "<td><b>";
-    echo $row['monto']; $Total+=floatval($row['monto']);
+    echo $row['comision']; $Total+=intval($row['comision']);
     echo "</td></b>";
     echo "</tr>";
 	 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -90,7 +90,7 @@ $Total=0;
      echo $row['nombre'];
      echo "</td></b>";
      echo "<td><b>";
-     echo $row['monto'];$Total+=floatval($row['monto']);
+     echo $row['comision'];$Total+=intval($row['comision']);
      echo "</td></b>";
      
      echo "</tr>";

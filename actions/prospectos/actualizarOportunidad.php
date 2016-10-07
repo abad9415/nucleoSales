@@ -28,5 +28,19 @@ if($_POST['etapaProspecto'] == 6){
 }
 $prospectos->comision = $comision;
 
+  $prospectos->idOportunidad=$_POST['idOportunidad'];
+	$consultarOportunidadesXprospectoRow = $prospectos->consultarOportunidadXiD();
+  while($row = $consultarOportunidadesXprospectoRow->fetch_assoc()) {
+    $idetapaActual = $row['idetapa'];
+    $fechaActual = $row['fechadeetapa'];
+  }
+$fechaSistemaDesdeAction = '';
+if($idetapaActual == $_POST['etapaProspecto']){
+  $fechaSistemaDesdeAction = $fechaActual;
+}else{
+  $fechaSistemaDesdeAction = date("Y-m-d");
+}
+
+$prospectos->fechaSistemaDesdeAction = $fechaSistemaDesdeAction;
 echo $prospectos->actualizarOportunidad();
 ?>

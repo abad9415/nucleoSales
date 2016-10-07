@@ -43,7 +43,7 @@
 			var consulta=$('#Consulta').val();
       var anio =$('#años').val();
 			var iniMes=$("#idMes").val();	
-			$("#containerGraf").load( "../../views/grafica/GraficaVentas.php?variable1="+iniMes+"&variable2="+consulta+"&variable3="+anio);
+			$("#containerGraf").load( "../../views/grafica/GraficaComisiones.php?variable1="+iniMes+"&variable2="+consulta+"&variable3="+anio);
 		}
     </script>
 

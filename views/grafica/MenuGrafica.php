@@ -32,7 +32,7 @@
 						<a href="#" class="" role="button" id= "Contacto" ><span  class="icon  icon-pie-chart iconsize"></span> Contacto</a>
 					</li> 
 					<li role="presentation">
-						<a href="#" class="" role="button" id= "comisionGanada" ><span  class="icon  icon-pie-chart iconsize"></span> Comisiones</a>
+						<a href="#" class="" role="button" id= "comisionGanada" ><span  class="icon  icon-money iconsize"></span> Comisiones</a>
 					</li>
 				</ul>
 			</div>

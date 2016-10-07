@@ -49,6 +49,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $costoInstalacion;
 			var $periodosPagos;
 			var $comision;
+			var $fechaSistemaDesdeAction;
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -586,6 +587,7 @@ if(!isset($_SESSION['idvendedor']))
 										idcontacto = '".$this->idContacto."', 
 										costoInstalacion = '".$this->costoInstalacion."', 
 										idetapa = '".$this->etapaOportunidad."',
+										fechadeetapa = '".$this->fechaSistemaDesdeAction."',
 										comision = '".$this->comision."'
 									WHERE idoportunidad = '".$this->idOportunidad."' ";
 				

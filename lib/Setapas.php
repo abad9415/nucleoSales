@@ -259,7 +259,34 @@ if(!isset($_SESSION['idvendedor']))
 											FROM oportunidad
 											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto 
 											INNER JOIN vendedor on vendedor.idvendedor=prospecto.idvendedor
-											where idetapa=6 and MONTH(fechadeetapa)='".$Mes."' and YEAR(fechadeetapa) ='".$anio."' and  vendedor.idvendedor='".$idvendedor."'
+											where idetapa=6 and MONTH(fechadeetapa)='".$Mes."' and YEAR(fechadeetapa) ='".$anio."' 
+											and  vendedor.idvendedor='".$idvendedor."'
+											group by MONTH(fechadeetapa)";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+              
+									return $resultado;
+			}
+			 public function ComisionVendedor($Mes,$anio){
+								
+				 /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+							$idvendedor=$_SESSION['idvendedor'];
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}//
+							//		
+						$query = "SELECT sum(comision) AS comision 
+											FROM oportunidad
+											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto 
+											INNER JOIN vendedor on vendedor.idvendedor=prospecto.idvendedor
+											where idetapa=6 and MONTH(fechadeetapa)='".$Mes."' and YEAR(fechadeetapa) ='".$anio."' 
+											and  vendedor.idvendedor='".$idvendedor."'
 											group by MONTH(fechadeetapa)";
 						$resultado = $mysqli->query($query);
             if(!$resultado){//If es una condicional
