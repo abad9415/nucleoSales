@@ -72,15 +72,17 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formaltvendedor").serialize(),
 															success: function(data){
-															
+																alert("hellow moto ");
+																swal("Guardado!", "", "success")
+																location.reload();
 																	//alert("guardado");
 																	
 													
 															}
 															});
-			swal("Guardado!", "", "success")
+		
 			
-			location.reload();
+			document.getElementById("#formaltvendedor").reset();
 			
 			
 			 });

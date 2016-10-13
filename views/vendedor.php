@@ -29,6 +29,10 @@ if(!isset($_SESSION['session']))
 foreach ($resultado as $row) {
 	$nombreVendedor = $row['nombreusuario'];
 	$apellidoVendedor = $row['apellidoP'];
+	$foto = $row['foto'];
+}
+if($foto == ""){
+	$foto = 'perfil.jpg';
 }
 /*
 $datosVendedorRow = datosUsuarioXId();
@@ -99,7 +103,7 @@ while($row = $datosVendedorRow->fetch_assoc()) {
 	<div class="content-items-menu-vendedor">
 		<div class="content-img-personal-vendedor">
 				<div class="datos-verndedor">
-					<img src="../recursos/imagenes/perfil.jpg" alt="..." class="img-circle">
+					<img src="../img/vendedores/<?=$foto;?>" alt="..." class="img-circle">
 					<span class="txt-nombre-vendedor"><?=$nombreVendedor . " " .$apellidoVendedor;?></span>
 				</div>
 		</div>

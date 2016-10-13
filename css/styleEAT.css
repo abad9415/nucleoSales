@@ -333,7 +333,17 @@ html {
   border: solid #197CDF 1.5px; }
 
 /* ESTILOS CONFIGURACION COTIZACION */
-/* COMPONENTES      COMPONENTES       COMPONENTES */
+/*Upload Vendedores */
+.content-preview-img-vendedor img {
+  width: 200px; }
+
+#files {
+  display: none; }
+
+/*Upload Vendedores */
+/* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
+/* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
+/* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
 .circulo-material {
   border-radius: 50%;
   display: flex;
@@ -384,7 +394,9 @@ html {
   .inpu-submit-escondido:focus {
     outline: 0px; }
 
-/* COMPONENTES      COMPONENTES       COMPONENTES */
+/* /COMPONENTES      /COMPONENTES       /COMPONENTES    /COMPONENTES      /COMPONENTES       /COMPONENTES */
+/* /COMPONENTES      /COMPONENTES       /COMPONENTES    /COMPONENTES      /COMPONENTES       /COMPONENTES */
+/* /COMPONENTES      /COMPONENTES       /COMPONENTES    /COMPONENTES      /COMPONENTES       /COMPONENTES */
 @media screen and (min-width: 993px) {
   .btn-menu-vendedor {
     margin: 5px;

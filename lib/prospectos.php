@@ -50,6 +50,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $periodosPagos;
 			var $comision;
 			var $fechaSistemaDesdeAction;
+			var $fotoVendedor;
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -831,6 +832,31 @@ if(!isset($_SESSION['idvendedor']))
 									return $resultado;
 			}
 			/*COMISIONES OPORTUNIDADES*/
+			
+					public function actualizarImagenVendedor(){
+				//$fechaSistema = date("d-m-y");
+						$vendedor=$_SESSION['idvendedor'];
+				$mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+				/* check connection */
+				if (mysqli_connect_errno()) {
+					printf("Error de conexión: %s\n", mysqli_connect_error());
+					exit();
+				}
+				$query ="
+								UPDATE vendedor 
+									SET 
+										foto = '".$this->fotoVendedor."'
+									WHERE idvendedor = '".$vendedor."' ";
+				
+						$resultado = $mysqli->query($query);
+				if (!$resultado) {
+						 return (printf ("Errormessage: %s\n", $mysqli->error));
+					}else{
+						/* close connection */
+						$mysqli->close();
+						return 'Cambio exitoso';
+					}
+			}
 			
     }
 ?>
