@@ -1,14 +1,27 @@
+<?php
+include '../../conexionBD.php';
+require '../../lib/prospectos.php';
+$prospectos = new prospectos($datosConexionBD);
+$vendedorRow = $prospectos->consultarVendedorXId();
+foreach($vendedorRow as $row){
+	$imgVendedorActual = $row['foto'];
+}
+if($imgVendedorActual == ''){
+	$imgVendedorActual = 'perfil.jpg';
+}
+?>
+
 <div class="row">
   <form enctype="multipart/form-data" id="formImgVendedor" method="post" class="upload-img-vendedor">
-    <div class="col-md-6">
+    <div class="col-md-6 txt-center">
         <div class="content-upload-img-section">
 					<input type="file" name="files" id="files" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
 					<label for="files" class="btn btn-default"><i class="icon-cloud_upload"> </i><span id="spanNombredeImagenNueva">Elige la imagen...</span></label>
 				</div>
         <input type="submit" value="Guardar" class='btn btn-primary'>
     </div>
-    <div class="col-md-6 content-preview-img-vendedor" id="">
-        <img src="/recursos/imagenes/perfil.jpg" alt="..." class="img-circle" id='previewImgVendedor'>
+    <div class="col-md-6 content-preview-img-vendedor txt-center" id="">
+        <img src="/img/vendedores/<?=$imgVendedorActual;?>" alt="..." class="img-circle" id='previewImgVendedor'>
     </div>
   </form>
 </div>

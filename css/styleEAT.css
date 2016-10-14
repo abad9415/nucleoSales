@@ -340,10 +340,30 @@ html {
 #files {
   display: none; }
 
+.content-upload-img-section {
+  margin-bottom: 10px; }
+
+.txt-center {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center; }
+
 /*Upload Vendedores */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
+.content-img-vendedor {
+  background: no-repeat center center;
+  width: 120px;
+  height: 120px;
+  background-size: 130%;
+  background-position: center;
+  border-radius: 50%; }
+
+.txt-nombre-vendedor {
+  margin-top: 10px; }
+
 .circulo-material {
   border-radius: 50%;
   display: flex;
@@ -393,6 +413,12 @@ html {
     cursor: auto; }
   .inpu-submit-escondido:focus {
     outline: 0px; }
+
+.green {
+  background: #3D9970; }
+
+.txt-white {
+  color: #fff; }
 
 /* /COMPONENTES      /COMPONENTES       /COMPONENTES    /COMPONENTES      /COMPONENTES       /COMPONENTES */
 /* /COMPONENTES      /COMPONENTES       /COMPONENTES    /COMPONENTES      /COMPONENTES       /COMPONENTES */
@@ -592,7 +618,12 @@ html {
 
   .sn-margin-right {
     margin-bottom: 10px;
-    padding: 0 !important; } }
+    padding: 0 !important; }
+
+  .submenu {
+    margin-top: 10px; }
+    .submenu:first-child {
+      margin-top: 0px; } }
 @media screen and (max-width: 768px) {
   .contentInt {
     width: 100%; }

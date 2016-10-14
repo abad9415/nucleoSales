@@ -34,12 +34,6 @@ foreach ($resultado as $row) {
 if($foto == ""){
 	$foto = 'perfil.jpg';
 }
-/*
-$datosVendedorRow = datosUsuarioXId();
-while($row = $datosVendedorRow->fetch_assoc()) {
-	$nombreVendedor = $row['nombreusuario'];
-}
-*/
 
 ?>
 <html>
@@ -103,7 +97,8 @@ while($row = $datosVendedorRow->fetch_assoc()) {
 	<div class="content-items-menu-vendedor">
 		<div class="content-img-personal-vendedor">
 				<div class="datos-verndedor">
-					<img src="../img/vendedores/<?=$foto;?>" alt="..." class="img-circle">
+					<div class="content-img-vendedor" style='background-image: url("../img/vendedores/<?=$foto;?>");'>
+					</div>
 					<span class="txt-nombre-vendedor"><?=$nombreVendedor . " " .$apellidoVendedor;?></span>
 				</div>
 		</div>

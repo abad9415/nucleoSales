@@ -1,5 +1,9 @@
 <?php
+
 session_start(); //Iniciamos la Sesion o la Continuamos
+include '../../conexionBD.php';
+  //requerimos de la clase prospectos que esta en el siguiente archivo
+ 	require '../../lib/Setapas.php';
 
 
 if(!isset($_SESSION['session']))
@@ -9,6 +13,16 @@ if(!isset($_SESSION['session']))
 //esto ocurre cuando la sesion caduca.
         
    }
+
+	$Setapas = new Setapas($datosConexionBD);
+	$ListadoJefe = $Setapas->ListadoJefe($etapa);  
+while($row = $ListadoJefe->fetch_assoc()) {
+			echo $row['idprospecto']; 
+      echo $row['nombre']; 
+      echo $row['monto'];
+      echo $row['fechadeetapa'];
+			echo	'<BR>';
+}
 
 ?>
 

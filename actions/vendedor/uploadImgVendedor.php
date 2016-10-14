@@ -3,7 +3,6 @@ include '../../conexionBD.php';
 require '../../lib/prospectos.php';
 $prospectos = new prospectos($datosConexionBD);
 
-
  $check = @getimagesize($_FILES['files']['tmp_name']);
      if ($check !== false) {
         move_uploaded_file($_FILES['files']['tmp_name'], "../../img/vendedores/" . $_FILES['files']['name']);

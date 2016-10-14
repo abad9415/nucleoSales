@@ -1,15 +1,6 @@
-<?php
-$para      = 'edgar.nok@gmail.com';
-$titulo    = 'El título';
-$mensaje   = 'Hola';
-$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-$bool = mail($para, $titulo, $mensaje, $cabeceras);
-if($bool){
-    echo "Mensaje enviado";
-}else{
-    echo "Mensaje no enviado";
-}
+<?php 
+$fecha1 =  "2016-09-30"; 
+$fecha2 = date("Y-m-d"); 
+$diferencia = abs((strtotime($fecha1) - strtotime($fecha2))/86400);  
+echo $diferencia;
 ?>

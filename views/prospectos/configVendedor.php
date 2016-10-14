@@ -1,14 +1,13 @@
 <div class="contentInt">
-  <h3 class="txt-centered">Configuraciónes</h3>
 	<div class="content-menu-vendedor-items"> 
-		<span id="configImg" class="btn-menu-vendedor">
-				<div class="content-elementos-menu-vendedor">
+		<span id="configImg" class="btn-menu-vendedor green submenu">
+				<div class="content-elementos-menu-vendedor txt-white">
 					<span  class="icon-file-text2 icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Imagen</span>
 				</div>
 		</span>
 		
-		<span id="configCotizacion" class="btn-menu-vendedor">
-				<div class="content-elementos-menu-vendedor">
+		<span id="configCotizacion" class="btn-menu-vendedor green submenu">
+				<div class="content-elementos-menu-vendedor txt-white">
 					<span  class="icon-file-text2 icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Cotización</span>
 				</div>
 		</span>

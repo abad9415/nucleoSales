@@ -858,5 +858,23 @@ if(!isset($_SESSION['idvendedor']))
 					}
 			}
 			
+			 public function consultarVendedorXId(){
+				 $idvendedor=$_SESSION['idvendedor'];
+             /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT * FROM vendedor WHERE idvendedor = '".$idvendedor."' ";//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+				}
+			
     }
 ?>
