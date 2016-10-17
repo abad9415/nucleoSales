@@ -31,7 +31,6 @@ $vendedor->comision= $_POST['comision'];
 $vendedor->altaComisionVendedorNuevo();
 //PARTE COMISIONES
 
-header('Location: ../views/jefedeventas/jefeventas.php');
 
 
 ?>

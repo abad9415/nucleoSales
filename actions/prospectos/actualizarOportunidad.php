@@ -11,9 +11,7 @@ $prospectos->montoOportunidad = $_POST['montoOportunidad'];
 $prospectos->etapaOportunidad = $_POST['etapaProspecto'];
 $prospectos->idContacto = $_POST['idContacto'];
 $prospectos->idOportunidad = $_POST['idOportunidad'];
-$prospectos->descripcionOportunidad = $_POST['descripciones'];
-$prospectos->costoOportunidad = $_POST['costos'];
-$prospectos->costoInstalacion = $_POST['costoInstalacion'];
+$prospectos->descripcionOportunidad = $_POST['descripcionOportunidad'];
 $prospectos->periodosPagos = $_POST['periodosPagosOportunidad'];
 
 $comision = 0;
@@ -42,5 +40,33 @@ if($idetapaActual == $_POST['etapaProspecto']){
 }
 
 $prospectos->fechaSistemaDesdeAction = $fechaSistemaDesdeAction;
-echo $prospectos->actualizarOportunidad();
+
+$respuestaActualizacion = $prospectos->actualizarOportunidad();
+
+// $prospectos->ultimoIdOportunidad = $_POST['idOportunidad'];
+// $prospectos->archivo = $_FILES['archivoCotizacion']['name'];
+// $prospectos->altaArchivoOportunidad();
+if($_FILES['archivoCotizacion']['name'] != ""){
+  
+  
+    /*validando si existe directorio para el prospecto*/
+    $idProspecto = $_POST['idprospecto'];
+    $ultimoIdOportunidad = $_POST['idOportunidad'];
+    $carpetaProspectoOportunidad = "../../files/cotizacion/$idProspecto/$ultimoIdOportunidad";
+  
+    if (!file_exists($carpetaProspectoOportunidad)) {
+          mkdir($carpetaProspectoOportunidad, 0777, true);
+      }
+    /*validando si existe directorio para el prospecto*/
+  
+    move_uploaded_file($_FILES['archivoCotizacion']['tmp_name'], "$carpetaProspectoOportunidad/" . $_FILES['archivoCotizacion']['name']);
+
+    $prospectos->ultimoIdOportunidad = $_POST['idOportunidad'];
+    $prospectos->archivo = $_FILES['archivoCotizacion']['name'];
+    $respuestaActualizacion = $prospectos->altaArchivoOportunidad();
+}
+
+echo $respuestaActualizacion;
+
+//echo $_POST['idOportunidad'];
 ?>

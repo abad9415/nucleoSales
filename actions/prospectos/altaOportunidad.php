@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include '../../conexionBD.php';
 //requerimos de la clase prospectos que esta en el siguiente archivo
 require '../../lib/prospectos.php';
@@ -9,9 +10,7 @@ $prospectos->montoOportunidad = $_POST['montoOportunidad'];
 $prospectos->etapaOportunidad = $_POST['etapaProspecto'];
 $prospectos->idContacto = $_POST['idContacto'];
 $prospectos->ultimoIdProspecto = $_POST['idprospecto'];
-$prospectos->descripcionOportunidad = $_POST['descripciones'];
-$prospectos->costoOportunidad = $_POST['costos'];
-$prospectos->costoInstalacion = $_POST['costoInstalacion'];
+$prospectos->descripcionOportunidad = $_POST['descripcionOportunidad'];
 $prospectos->periodosPagos = $_POST['periodosPagosOportunidad'];
 $comision = 0;
 if($_POST['etapaProspecto'] == 6){
@@ -24,5 +23,30 @@ if($_POST['etapaProspecto'] == 6){
   
 }
 $prospectos->comision = $comision;
-echo $prospectos->altaOportunidad();
+ $respuesta = $prospectos->altaOportunidad();
+
+if($_FILES['archivoCotizacion']['name'] != ""){
+    $ultimoIdRow = $prospectos->ultimoIdOportunidad();
+    foreach($ultimoIdRow as $row)
+    {
+      $ultimoIdOportunidad = $row['idoportunidad'];
+    }
+  
+  
+    /*validando si existe directorio para el prospecto*/
+    $idProspecto = $_POST['idprospecto'];
+    $carpetaProspectoOportunidad = "../../files/cotizacion/$idProspecto/$ultimoIdOportunidad";
+  
+    if (!file_exists($carpetaProspectoOportunidad)) {
+          mkdir($carpetaProspectoOportunidad, 0777, true);
+      }
+    /*validando si existe directorio para el prospecto*/
+  
+    move_uploaded_file($_FILES['archivoCotizacion']['tmp_name'], "$carpetaProspectoOportunidad/" . $_FILES['archivoCotizacion']['name']);
+
+    $prospectos->ultimoIdOportunidad = $ultimoIdOportunidad;
+    $prospectos->archivo = $_FILES['archivoCotizacion']['name'];
+    $respuesta = $prospectos->altaArchivoOportunidad();
+}
+echo $respuesta;
 ?>

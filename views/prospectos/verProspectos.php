@@ -73,12 +73,7 @@ switch($filtroQuery){
 ?>
 	<script type="text/javascript">
 	
-			$('p').click(function() { //al hacer clic al elemento p
-				alert("dentro");
-				//alert($(this).text()); //Función que hace un pop up con el texto del elemento
-			//	$("#content").show();
-			//	$("#container").hide();
-				//$("#content").load("../views/prospectos/detalleProspecto.php?idprospecto=" + $(this).text());
+			$('p').click(function() { 
 				$("#con").load("../views/prospectos/detalleProspecto.php?idprospecto=" + $(this).tex());
 			});
 		});

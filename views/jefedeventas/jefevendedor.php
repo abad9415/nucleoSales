@@ -175,8 +175,8 @@
 							</div>
 			
 				 <div class="modal-footer modalrenglones">
-       								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        							<input type="submit"  value="guardar"  id="enviar" class="btn" data-dismiss="modal">
+       								 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        							<input type="submit"  value="Guardar"  id="enviar" class="btn btn-primary" data-dismiss="modal">
      								 </div>
 							
 							
@@ -203,8 +203,9 @@
 				</div>
 			
 				 <div class="modal-footer modalrenglones">
-       								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        							<input type="button"  value="guardar"  id="enviaredit" class="btn" data-dismiss="modal">
+       								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					  					<button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+        							<input type="button"  value="Guardar"  id="enviaredit" class="btn btn-primary" data-dismiss="modal">
      								 </div>
 							
 							

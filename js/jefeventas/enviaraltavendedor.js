@@ -64,7 +64,7 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 		
 		
 	  $(document).on("click","#enviar",function(e) {
-			alert("envio");
+		
 			
 				 $.ajax({
 															type: "POST",
@@ -72,33 +72,54 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															cache: false,
 															data: $("#formaltvendedor").serialize(),
 															success: function(data){
-																alert("hellow moto ");
-																swal("Guardado!", "", "success")
-																location.reload();
-																	//alert("guardado");
-																	
 													
+														
+		  										
+																
+																
+																
+	swal({
+  title: "Guardado!",
+  type: "success",
+  confirmButtonClass: "btn-success",
+  confirmButtonText: "ok",
+  closeOnConfirm: false
+},
+function(){
+  location.reload();
+});
+																
+																
 															}
 															});
 		
-			
-			document.getElementById("#formaltvendedor").reset();
+				//	document.getElementById("#formaltvendedor").reset()	
 			
 			
 			 });
 		
 		 $(document).on("click", "#enviaredit",function(e) {
 			
-				 $.ajax({
+									 $.ajax({
 															type: "POST",
 															url: "../../actions/jefeventas/editarvendedor.php",
 															cache: false,
 															data: $("#formalteditvendedor").serialize(),
 															success: function(data){
-																	swal("Modificado!", "", "success")
+														swal({
+																	title: "Modificado!",
+																	type: "success",
+																	confirmButtonClass: "btn-success",
+																	confirmButtonText: "ok",
+																	closeOnConfirm: false
+																},
+																function(){
 																	location.reload();
-															}
-															});
+																});
+ 																																			
+															
+																}
+													});
 														
 											
 			

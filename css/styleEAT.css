@@ -350,6 +350,13 @@ html {
   align-items: center; }
 
 /*Upload Vendedores */
+/*Upload Cotizacion */
+.content-archivos-cotizacion {
+  width: 100%; }
+  .content-archivos-cotizacion label {
+    display: block; }
+
+/*Upload Cotizacion */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */
 /* COMPONENTES      COMPONENTES       COMPONENTES    COMPONENTES      COMPONENTES       COMPONENTES */

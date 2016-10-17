@@ -145,12 +145,12 @@ if(!isset($_SESSION['idvendedor']))
 							exit();
 						}
 						$query = 
-							"SELECT oportunidad.monto, oportunidad.fechadeetapa, prospecto.nombre, prospecto.idprospecto
+							"SELECT oportunidad.monto, oportunidad.fechadeetapa, prospecto.nombre, prospecto.idprospecto,etapadeventa.nombre
 								FROM oportunidad
 								INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
 								INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto
 								INNER JOIN vendedor ON vendedor.idvendedor = prospecto.idvendedor
-								WHERE etapadeventa.idetapa =1";
+								WHERE etapadeventa.idetapa BETWEEN 1 AND 3";
 						$resultado = $mysqli->query($query);
             if(!$resultado){//If es una condicional
                 printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query

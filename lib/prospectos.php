@@ -51,6 +51,8 @@ if(!isset($_SESSION['idvendedor']))
 			var $comision;
 			var $fechaSistemaDesdeAction;
 			var $fotoVendedor;
+			var $ultimoIdOportunidad;
+			var $archivo;
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -412,25 +414,21 @@ if(!isset($_SESSION['idvendedor']))
 						(idoportunidad,
 						descripcion,
 						periodosPagos,
-						costoPorOportunidad,
 						monto,
 						idmoneda,
 						idprospecto,
 						idetapa,
 						idcontacto,
-						costoInstalacion,
 						fechadeetapa,
 						comision)
 						VALUES (NULL,
 						'".$this->descripcionOportunidad."',
 						'".$this->periodosPagos."',
-						'".$this->costoOportunidad."',
 						'".$this->montoOportunidad."',
 						'".$this->monedaOportunidad."',
 						'".$this->ultimoIdProspecto."',
 						'".$this->etapaOportunidad."',
 						'".$this->idContacto."',
-						'".$this->costoInstalacion."',
 						'".$fechaSistema."',
 						'".$this->comision."')";
 					$resultado=$mysqli->query($query);
@@ -578,15 +576,13 @@ if(!isset($_SESSION['idvendedor']))
 					exit();
 				}
 				$query ="
-								UPDATE  oportunidad 
+								UPDATE oportunidad 
 									SET 
 										descripcion = '".$this->descripcionOportunidad."',	
-										periodosPagos = '".$this->periodosPagos."',	
-										costoPorOportunidad = '".$this->costoOportunidad."',	
+										periodosPagos = '".$this->periodosPagos."',
 										monto = '".$this->montoOportunidad."',
 										idmoneda = '".$this->monedaOportunidad."', 
 										idcontacto = '".$this->idContacto."', 
-										costoInstalacion = '".$this->costoInstalacion."', 
 										idetapa = '".$this->etapaOportunidad."',
 										fechadeetapa = '".$this->fechaSistemaDesdeAction."',
 										comision = '".$this->comision."'
@@ -874,6 +870,67 @@ if(!isset($_SESSION['idvendedor']))
 						}
 						$mysqli->close();//cierra la conexion con la BD
 									return $resultado;
+				}
+			
+			public function ultimoIdOportunidad(){
+				/* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "SELECT MAX(idoportunidad) AS idoportunidad FROM oportunidad";
+						$resultado = $mysqli->query($query);
+            if(!$resultado){//If es una condicional
+                printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+            }
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+			}
+			
+			 public function altaArchivoOportunidad(){
+            /* conectamos a la bd */
+            $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+					  if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "INSERT INTO archivosOportunidad
+						(idarchivosOportunidad,
+						idoportunidad,
+						archivo)
+						VALUES (NULL,
+						'".$this->ultimoIdOportunidad."',
+						'".$this->archivo."')";
+					$resultado=$mysqli->query($query);
+					if (!$resultado) {
+						 return (printf ("Errormessage: %s\n", $mysqli->error));
+					}
+					else{
+						/* close connection */
+						$mysqli->close();
+						return 'Alta exitosa';
+					}
+					
+        }
+			
+			public function consultarArchivosCotizacion(){
+				$limit = $this->limit;
+				$nroLotes = $this->nroLotes;
+				$idOportunidad = $this->idOportunidad;
+					$idvendedor=$_SESSION['idvendedor'];
+					try {
+							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+
+							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idoportunidad = $idOportunidad");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
 				}
 			
     }
