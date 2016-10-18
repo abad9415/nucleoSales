@@ -54,6 +54,7 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															
 																$("#cuerpobody1").html(data);
 																$("#modalEditarVendedor").modal("toggle");
+																
 													
 															}
 															});
@@ -125,6 +126,26 @@ function(){
 			
 			
 			 });
+		
+		$("#eliminar").click(function(){
+			var idv=$("#idvendedor").val();
+			alert(idv);
+			
+			
+			$.ajax({
+															type: "POST",
+															url: "../../actions/jefeventas/eliminarVendedor.php",
+															cache: false,
+															data: "idven="+idv,
+															success: function(data){
+															
+																location.reload();
+													
+															}
+															});
+			
+			
+		});
 		
 	
   });

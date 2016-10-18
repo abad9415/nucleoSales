@@ -5,6 +5,8 @@ if (mediaquery.matches) {
 } else {
  //alert("pantalla grande");
 }
+		
+											 
 	$("#current").click(function() {
 		location.reload();
 	});

@@ -47,4 +47,4 @@ function izquirda() {
   </div>
   <div class=col-md-4></div>
 </div>
-<div id="idActividad"></div>
+<div class="col-md-12" id="idActividad"></div>

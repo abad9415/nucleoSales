@@ -51,7 +51,7 @@ echo '
 											<div class="col-lg-3">
             					<label for="recipient-name" class="control-label">Nombre</label>
             					<input type="text" name="nombre" id="nombre" class="form-control" value="'.$nombre.'" >
-                      <input type="hidden" name="idvendedor" value="'.$idvendedor.'">
+                      <input type="hidden" id="idvendedor" name="idvendedor" value="'.$idvendedor.'">
 											</div>
 											<div class="col-lg-3">
             					<label for="recipient-name" class="control-label">Apellido Paterno</label>

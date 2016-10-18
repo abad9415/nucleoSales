@@ -16,13 +16,7 @@ if(!isset($_SESSION['session']))
 
 	$Setapas = new Setapas($datosConexionBD);
 	$ListadoJefe = $Setapas->ListadoJefe($etapa);  
-while($row = $ListadoJefe->fetch_assoc()) {
-			echo $row['idprospecto']; 
-      echo $row['nombre']; 
-      echo $row['monto'];
-      echo $row['fechadeetapa'];
-			echo	'<BR>';
-}
+
 
 ?>
 
@@ -72,6 +66,11 @@ while($row = $ListadoJefe->fetch_assoc()) {
 		 
 		<!--  MENU PRINCIPAL  -->
 		 	<div class="content-menu-vendedor-items">
+				<span id="current" class="btn-menu-vendedor">
+						<div class="content-elementos-menu-vendedor">
+							<span  class="icon iconsize icon-user-tie icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Inicio</span>
+						</div>
+					</span>
 					<span id="vendedores" class="btn-menu-vendedor">
 						<div class="content-elementos-menu-vendedor">
 							<span  class="icon iconsize icon-user-tie icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Vendedor</span>
@@ -96,11 +95,11 @@ while($row = $ListadoJefe->fetch_assoc()) {
 						</div>
 					</span>	
 				
-					<span id="Calendar" class="btn-menu-vendedor">
+					<!--<span id="Calendar" class="btn-menu-vendedor">
 						<div class="content-elementos-menu-vendedor">
 							<span  class="icon iconsize icon-calendar icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Calendario</span>
 						</div>
-					</span>
+					</span>-->
 				
 					<span id="Metas" class="btn-menu-vendedor">
 						<div class="content-elementos-menu-vendedor">
@@ -117,7 +116,49 @@ while($row = $ListadoJefe->fetch_assoc()) {
 		 </div>
 		<!--  /MENU PRINCIPAL  -->
 	 </div>
-		<div id="content" ></div>
+		<div id="content" >
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#MetasJefe">Prospectos Inactivos</button>
+		</div>
+		<div class="modal fade" id="MetasJefe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form id="CrearMeta" class="form-horizontal">
+			
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Prospectos Inactivos</h4>
+			  </div>
+			  <div class="modal-body">
+					<table class="table table-hover tableEAT">
+           <thead>
+             <tr>
+							   <th>Id Prospectos</th>
+                <th>Nombre Prospecto</th>
+							 	<th>Nombre Vendedor</th>
+                
+              </tr>
+           </thead>
+                  
+           <?php
+           while($row = $ListadoJefe->fetch_assoc()) {
+						 	$fecha1 =  $row['fechadeetapa'];
+							$fecha2 = date("Y-m-d"); 
+							$diferencia = abs((strtotime($fecha1) - strtotime($fecha2))/86400);  
+						if($diferencia>=15){?>
+                <tr>
+								<td><?= $row['idprospecto']; ?></p></a></td>
+                <td><?= $row['Nombre']; ?></p></a></td>
+                <td><?= $row['Vendedor'];?></td>
+                
+              </tr>
+           <?php
+           	} 
+						}?>
+          </table>
+				  
+			</div>
+		  </div>
+		</div>
 		
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -136,6 +177,7 @@ while($row = $ListadoJefe->fetch_assoc()) {
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
 	<script>
+		
 			  var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
       var $menu = document.getElementById('ConentenMenuPrincipalVendedor');
 

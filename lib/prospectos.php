@@ -53,6 +53,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $fotoVendedor;
 			var $ultimoIdOportunidad;
 			var $archivo;
+			var $idarchivosOportunidad;
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -917,14 +918,26 @@ if(!isset($_SESSION['idvendedor']))
         }
 			
 			public function consultarArchivosCotizacion(){
-				$limit = $this->limit;
-				$nroLotes = $this->nroLotes;
 				$idOportunidad = $this->idOportunidad;
 					$idvendedor=$_SESSION['idvendedor'];
 					try {
 							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idoportunidad = $idOportunidad");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
+				}
+			
+			public function consultarArchivosCotizacionXId(){
+				$idarchivosOportunidad = $this->idarchivosOportunidad;
+					try {
+							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+
+							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idarchivosOportunidad = $idarchivosOportunidad");
 						$resultado->execute();
 							return $resultado;
 

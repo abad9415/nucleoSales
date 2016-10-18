@@ -204,7 +204,7 @@
 			
 				 <div class="modal-footer modalrenglones">
        								<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					  					<button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+					  					<button type="button" class="btn btn-danger" data-dismiss="modal" id="eliminar">Eliminar</button>
         							<input type="button"  value="Guardar"  id="enviaredit" class="btn btn-primary" data-dismiss="modal">
      								 </div>
 							

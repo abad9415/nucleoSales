@@ -159,7 +159,14 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 					</div>
           <div id="mostrarArchivosCotizacion" class="content-archivos-cotizacion">
             <?php
+						$iarch = 0;
             foreach($archivosRow as $rowArchivos){
+							if($iarch == 0){
+								?>
+						<label class="content-btns-oportunidades">Archivos</label>
+						<?php
+								$iarch = 1;
+							}
               ?>
                 <input type="radio" id="descargarArchivoCotizacion<?=$rowArchivos['idarchivosOportunidad'];?>" class="descargarArchivoCotizacion inputRadio" value="<?=$rowArchivos['idarchivosOportunidad'];?>">
                 <label for="descargarArchivoCotizacion<?=$rowArchivos['idarchivosOportunidad'];?>" type="button" class="btn btn-success content-btns-oportunidades"><span class="icon-file-pdf"></span> <?=$rowArchivos['archivo'];?></label>
@@ -173,12 +180,12 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 				<input type="hidden" id="idprospecto" name ="idprospecto" value="<?=$idprospecto;?>">
 				<input type="submit" value="<?=$actionBtn;?>" name="enviar" class="btn btn-primary" id="btnActionGeneral">
 				<div id="descargarReportes" style="display: none;" class="">
-          <input type="file" id="archivoCotizacion" name="archivoCotizacion">
+          <input type="file" id="archivoCotizacion" name="archivoCotizacion" class="form-control inputOportunidad" disabled>
 <!-- 					<span id="descargarCotizacion" class="btn btn-danger"><span class="icon-file-pdf">Cotización</span></span> -->
 				</div>
 			</div>
 </form>
-
+<div id="content-download"></div>
 <script>
 		$(document).ready(function(){
 		var banderaClick = 0;
@@ -264,8 +271,9 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
       
       /*Descargar el archivo de la cotizacion*/
       $(".descargarArchivoCotizacion").click(function(){
-        alert($(this).val());
-      });
+				window.location.replace("../../../actions/prospectos/oportunidades/descargarArchivo.php?idArchivoOportunidad=" + $(this).val() + "&idprospecto=" + $("#idprospecto").val() + "&idOportunidad=" + $("#idOportunidad").val());
+			//window.location.replace("../../../actions/prospectos/oportunidades/descargarArchivo.php", {idArchivoOportunidad: $(this).val(), idprospecto: $("#idprospecto").val(), idOportunidad: $("#idOportunidad").val() });		
+			});
       /*Descargar el archivo de la cotizacion*/
     });
 </script>

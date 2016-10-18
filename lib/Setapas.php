@@ -135,7 +135,7 @@ if(!isset($_SESSION['idvendedor']))
 									return $resultado;
 			}
 			 
-			 public function ListadoJefe($Etapa){
+			 public function ListadoJefe(){
 				 /* conectamos a la bd */
             $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
 						$idvendedor=$_SESSION['idvendedor'];
@@ -145,7 +145,7 @@ if(!isset($_SESSION['idvendedor']))
 							exit();
 						}
 						$query = 
-							"SELECT oportunidad.monto, oportunidad.fechadeetapa, prospecto.nombre, prospecto.idprospecto,etapadeventa.nombre
+							"SELECT oportunidad.fechadeetapa, (prospecto.nombre)AS 'Nombre', prospecto.idprospecto,CONCAT( nombreusuario,  ' ', apellidoM )  'Vendedor'
 								FROM oportunidad
 								INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
 								INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto
