@@ -145,7 +145,7 @@ if(!isset($_SESSION['idvendedor']))
 							exit();
 						}
 						$query = 
-							"SELECT oportunidad.fechadeetapa, (prospecto.nombre)AS 'Nombre', prospecto.idprospecto,CONCAT( nombreusuario,  ' ', apellidoM )  'Vendedor'
+							"SELECT oportunidad.fechadeetapa, (prospecto.nombre)AS 'Nombre', prospecto.idprospecto,CONCAT( nombreusuario,  ' ', apellidoM )  'Vendedor',etapadeventa.nombre as 'Etapa'
 								FROM oportunidad
 								INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
 								INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto

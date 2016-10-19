@@ -116,8 +116,8 @@ if(!isset($_SESSION['session']))
 		 </div>
 		<!--  /MENU PRINCIPAL  -->
 	 </div>
-		<div id="content" >
-			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#MetasJefe">Prospectos Inactivos</button>
+		<div id="content" align="center">
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#MetasJefe">Oportunidades Inactivas</button>
 		</div>
 		<div class="modal fade" id="MetasJefe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
@@ -135,10 +135,11 @@ if(!isset($_SESSION['session']))
 							   <th>Id Prospectos</th>
                 <th>Nombre Prospecto</th>
 							 	<th>Nombre Vendedor</th>
+							 	<th>Etapa</th>
                 
               </tr>
            </thead>
-                  
+						<tbody>
            <?php
            while($row = $ListadoJefe->fetch_assoc()) {
 						 	$fecha1 =  $row['fechadeetapa'];
@@ -146,14 +147,17 @@ if(!isset($_SESSION['session']))
 							$diferencia = abs((strtotime($fecha1) - strtotime($fecha2))/86400);  
 						if($diferencia>=15){?>
                 <tr>
-								<td><?= $row['idprospecto']; ?></p></a></td>
-                <td><?= $row['Nombre']; ?></p></a></td>
+									
+								<td><p><?= $row['idprospecto']; ?><p></td>
+                <td><?= $row['Nombre']; ?></td>
                 <td><?= $row['Vendedor'];?></td>
+									<td><b><?= $row['Etapa'];?></b></td>
                 
               </tr>
            <?php
            	} 
 						}?>
+						</tbody>
           </table>
 				  
 			</div>
@@ -161,6 +165,14 @@ if(!isset($_SESSION['session']))
 		</div>
 		
 	</div>
+
+<!--DIV Tareas-->
+<div id="tareas" align="center">
+	
+</div>
+<!--Final de DIV Tareas-->
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="../../js/jefeventas/menujefeventas.js"></script>
@@ -177,7 +189,38 @@ if(!isset($_SESSION['session']))
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
 	<script>
-		
+		$('tbody').find('tr').click(function(e){
+			var id=$(this).find('p').text();
+			var Etapa=$(this).find('b').text();
+			var etapa=0;
+			switch(Etapa){
+		case 'Analizando': 
+				etapa=1;
+			break;
+		case 'Propuesta': 
+				etapa=2;
+			break;
+		case 'Cotizacion': 
+				etapa=3;
+			break;
+		default: 
+			etapa=0;
+			break;
+	}
+	
+		 $.ajax({
+						type: "POST",
+						url: "../../views/grafica/OportunidaLista.php",
+						cache: false,
+						data: "idProspecto="+id+"&idEtapa="+etapa,
+						success: function(datos){
+						 swal(datos);				
+						}
+			 	});
+
+			
+		});	
+	
 			  var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
       var $menu = document.getElementById('ConentenMenuPrincipalVendedor');
 
