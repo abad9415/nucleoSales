@@ -54,6 +54,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $ultimoIdOportunidad;
 			var $archivo;
 			var $idarchivosOportunidad;
+			var $comisionInstalacion;
 		
         
           //Declaramos el método constructor
@@ -422,7 +423,8 @@ if(!isset($_SESSION['idvendedor']))
 						idetapa,
 						idcontacto,
 						fechadeetapa,
-						comision)
+						comision,
+						comisionxinstalacion)
 						VALUES (NULL,
 						'".$this->descripcionOportunidad."',
 						'".$this->periodosPagos."',
@@ -432,7 +434,8 @@ if(!isset($_SESSION['idvendedor']))
 						'".$this->etapaOportunidad."',
 						'".$this->idContacto."',
 						'".$fechaSistema."',
-						'".$this->comision."')";
+						'".$this->comision."',
+				 		'".$this->comisionInstalacion."')";
 					$resultado=$mysqli->query($query);
 					if (!$resultado) {
 						 return (printf ("Errormessage: %s\n", $mysqli->error));
@@ -587,7 +590,8 @@ if(!isset($_SESSION['idvendedor']))
 										idcontacto = '".$this->idContacto."', 
 										idetapa = '".$this->etapaOportunidad."',
 										fechadeetapa = '".$this->fechaSistemaDesdeAction."',
-										comision = '".$this->comision."'
+										comision = '".$this->comision."',
+										comisionxinstalacion = '".$this->comisionInstalacion."'
 									WHERE idoportunidad = '".$this->idOportunidad."' ";
 				
 						$resultado = $mysqli->query($query);

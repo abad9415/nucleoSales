@@ -29,7 +29,17 @@ while($row = $consultarconfiguracionesRow->fetch_assoc()) {
             //alert(result);
             swal(result + "!", "Para todos los vendedores", "success")
          $("#contentDetalleComision").load("/views/jefedeventas/comisiones/comisionGeneral.php");
+          $("#contentDetalleComisionVendedor").load( "/views/jefedeventas/comisiones/comisionXvendedor.php");
      });
     return false;
   }); 
+  
+   $("#comisionVentas").css({
+						"background": "rgba(8, 166, 95, .8)",
+            "color": "white"
+					});
+         $("#comisionInstalacion").css({
+						"background": "rgba(255,255,255,0)",
+            "color": "#9A9A9A"
+					});
 </script>

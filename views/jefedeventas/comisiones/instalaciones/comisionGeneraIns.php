@@ -29,7 +29,16 @@ while($row = $consultarconfiguracionesRow->fetch_assoc()) {
             //alert(result);
             swal(result + "!", "Para todos los vendedores", "success")
          $("#contentDetalleComision").load("/views/jefedeventas/comisiones/instalaciones/comisionGeneraIns.php");
+         $("#contentDetalleComisionVendedor").load("/views/jefedeventas/comisiones/instalaciones/comisionXvendedorInstalacion.php");
      });
     return false;
   }); 
+  $("#comisionInstalacion").css({
+						"background": "rgba(8, 166, 95, .8)",
+            "color": "white"
+					});
+         $("#comisionVentas").css({
+						"background": "rgba(255,255,255,0)",
+            "color": "#9A9A9A"
+					});
 </script>

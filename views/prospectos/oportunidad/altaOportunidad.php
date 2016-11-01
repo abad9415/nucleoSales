@@ -115,25 +115,9 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 
 							<label for="periodosPagosOportunidad">Definir los pagos:</label>
 									<select id="periodosPagosOportunidad" name="periodosPagosOportunidad" class="form-control inputOportunidad" disabled>
-												<?php
-													if (empty($periodosPagosOportunidad)) {}else{
-														?>
 																<option value="Mensual">Mensual</option>
 																<option value="Semestral">Semestral</option>
 																<option value="Anual">Anual</option>
-														<?php
-															}
-															?>
-															<?php
-															 while($row = $consultarOportunidadesXprospectoRow->fetch_assoc()) {
-																 ?><option value="<?$row['periodosPagos'];?>"><?$row['periodosPagos'];?></option>
-																<?php  
-																}
-														?>
-										
-										
-										
-										
 									</select>
 						
 

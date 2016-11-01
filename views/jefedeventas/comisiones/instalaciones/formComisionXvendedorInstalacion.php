@@ -40,7 +40,7 @@ $('.inputDisfrasadoComision').focusout(function() {
           }else{
              $.ajax({
                type: "POST", 	
-                url: "/actions/jefeventas/comisiones/comisionXvendedor.php",
+                url: "/actions/jefeventas/comisiones/comisionXvendedorInstalacion.php",
                 data:"comisionVendedor="+$("#comisionNueva").val()+
                       '&idComision='+$("#idComision").val()
               }).done(function(result) {

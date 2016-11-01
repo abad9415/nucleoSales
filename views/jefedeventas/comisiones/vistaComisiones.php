@@ -1,37 +1,25 @@
 <div class="contentInt">
-		<ul class="navEAT content-meno-prsopectos">
-			<li role="button" class="btn-menu-prospecto li-EAT"><h4>Comision de Ventas</h4>
-					<ul>
-						<li id="comisionGeneralXventas">General</li>
-						<li id="comisionPorVendedorXventas">Vendedor Especifico</li>
-					</ul>
-			</li>
-				
-			<li role="button" class="btn-menu-prospecto li-EAT"><h4>Comision de Instalaciones</h4>
-					<ul>
-						<li id="comisionGeneralXInstalacion">General</li>
-						<li id="comisionVendedorXInstalacion">Vendedor Especifico</li>
-					</ul>
-				</li>
-		</ul>
-	<div id="contentDetalleComision"></div>
+			<div class="content-meno-prsopectos">
+       <span role="button" id="comisionVentas" class="btn-menu-vendedor">
+         <h4>Comision de ventas</h4>
+       </span>
+       <span role="button" id="comisionInstalacion" class="btn-menu-vendedor">
+          <h4>Comision de Instalacion</h4>
+       </span>
+	 </div>
+   <div id="contentDetalleComision"></div>
+	<div id="contentDetalleComisionVendedor"></div>
 </div>
 
 <script>
-	$('.dropdown-toggleEAT').dropdown()
- 	 $("#comisionGeneralXventas").click(function(){
+ 	 $("#comisionVentas").click(function(){
 			 $("#contentDetalleComision").load( "comisiones/comisionGeneral.php");
+		 	$("#contentDetalleComisionVendedor").load( "comisiones/comisionXvendedor.php");
 	});
 	
-	$("#comisionPorVendedorXventas").click(function(){
-			 $("#contentDetalleComision").load( "comisiones/comisionXvendedor.php");
-	});
-	
-	$("#comisionGeneralXInstalacion").click(function(){
+	$("#comisionInstalacion").click(function(){
 			 $("#contentDetalleComision").load( "comisiones/instalaciones/comisionGeneraIns.php");
+				$("#contentDetalleComisionVendedor").load( "comisiones/instalaciones/comisionXvendedorInstalacion.php");
 	});
 	
-	$("#comisionVendedorXInstalacion").click(function(){
-			 $("#contentDetalleComision").load( "comisiones/instalaciones/comisionXvendedorInstalacion.php");
-	});
 </script>

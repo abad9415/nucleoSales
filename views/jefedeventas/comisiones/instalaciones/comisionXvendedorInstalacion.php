@@ -13,7 +13,7 @@ $vendedoresRow = $vendedor->obtener_vendedores();
               <th>Id</th>
 							<th>Nombre</th>
 							<th>Correo</th>
-							<th>Comision</th>
+							<th>Comision Por Instalación</th>
 						</tr>
 					</thead>
           <tbody>

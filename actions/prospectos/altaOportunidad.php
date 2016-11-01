@@ -13,16 +13,20 @@ $prospectos->ultimoIdProspecto = $_POST['idprospecto'];
 $prospectos->descripcionOportunidad = $_POST['descripcionOportunidad'];
 $prospectos->periodosPagos = $_POST['periodosPagosOportunidad'];
 $comision = 0;
+$comisionInstalacion = 0;
 if($_POST['etapaProspecto'] == 6){
   $prospectos->idVendedor = $_SESSION['idvendedor'];
   $consultarcomisionXidVendedorRow = $prospectos->consultarcomisionXidVendedor();
   while($row = $consultarcomisionXidVendedorRow->fetch_assoc()) {
        $comisionDelVendedor = $row['comision'];
+       $comisionDelVendedorInstalacion = $row['comisionxinstalacion'];
   }
   $comision = ($comisionDelVendedor * $_POST['montoOportunidad'])/100;
+  $comisionInstalacion = ($comisionDelVendedorInstalacion * $_POST['montoOportunidad'])/100;
   
 }
 $prospectos->comision = $comision;
+$prospectos->comisionInstalacion = $comisionInstalacion;
  $respuesta = $prospectos->altaOportunidad();
 
 if($_FILES['archivoCotizacion']['name'] != ""){

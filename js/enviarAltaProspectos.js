@@ -77,7 +77,7 @@
            '&idprospecto='+$("#idprospecto").val()+
            '&idcontacto='+$("#idcontacto").val(),
 				success: function(data){
-          
+        
         if (urlAction == "../../actions/altaProspecto.php") {
          // alert("regrese del alta php");
         //alert("entraste guardar");

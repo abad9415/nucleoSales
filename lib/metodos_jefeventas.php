@@ -396,6 +396,24 @@ function __construct($datosConexionBD){
 						$mysqli->close();//cierra la conexion con la BD
 			}
 	
+	public function agregarComisionAtodosVendedoresXInstalacion(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "INSERT INTO configComisiones (idvendedor,comisionxinstalacion)
+						VALUES (
+						'".$this->idvendedor."',
+						'".$this->comision."');";//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+			}
+	
 	public function verificarExistenciaComisiones(){
 			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
 						/* check connection */
@@ -421,6 +439,24 @@ function __construct($datosConexionBD){
 						}
 						$query = "UPDATE configComisiones 
 											SET comision='".$this->comision."'
+													Where idvendedor=".$this->idvendedor;//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return $resultado;
+		}	
+	
+	public function agregarComisionAtodosVendedoresUpdateXInstalacion(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "UPDATE configComisiones 
+											SET comisionxinstalacion='".$this->comision."'
 													Where idvendedor=".$this->idvendedor;//sentencia de SQL para realizar una consulta
 						$resultado = $mysqli->query($query);
 						if(!$resultado){//If es una condicional
@@ -469,6 +505,23 @@ function __construct($datosConexionBD){
 						}
 						$query = "UPDATE configComisiones 
 											SET comision='".$this->comision."'
+													Where idcomision=".$this->idComision;//sentencia de SQL para realizar una consulta
+						$resultado = $mysqli->query($query);
+						if(!$resultado){//If es una condicional
+								printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
+						}
+						$mysqli->close();//cierra la conexion con la BD
+									return "Cambio Exitoso";
+		}
+	public function cambiarComisionXvendedorInstalacion(){
+			 $mysqli = new mysqli($this->datosConexionBD[0], $this->datosConexionBD[1], $this->datosConexionBD[2], $this->datosConexionBD[3]);
+						/* check connection */
+						if (mysqli_connect_errno()) {
+							printf("Error de conexión: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$query = "UPDATE configComisiones 
+											SET comisionxinstalacion='".$this->comision."'
 													Where idcomision=".$this->idComision;//sentencia de SQL para realizar una consulta
 						$resultado = $mysqli->query($query);
 						if(!$resultado){//If es una condicional
