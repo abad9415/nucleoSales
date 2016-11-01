@@ -117,11 +117,9 @@ $tabla = $tabla.'<table class="table table-hover tableEAT">
 foreach($registroRow as $row){
 		$tabla = $tabla.'<tr>
 		<td>
-				<div class="circulo-material id-prospecto-paginar-prospectos" style="background-color:'.$row['color'].'">
-					<p>
+					<p class="circulo-material id-prospecto-paginar-prospectos" style="background-color:'.$row['color'].'">
 						'.$row['idprospecto'].'
 					</p>
-				</div>
 		</td>
 		<td>
 			'.$row['nombre'].'

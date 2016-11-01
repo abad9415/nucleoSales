@@ -40,6 +40,8 @@ $(document).ready(function(){
         $("#content").load( "../views/prospectos/configVendedor.php" );
       
 	});	
+	
+	
 });
 
   

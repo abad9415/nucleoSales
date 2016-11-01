@@ -183,7 +183,7 @@ require_once('../../views/Calendario/bdd.php');
 		
 			eventRender: function(event, element) {
 				
-				element.bind('dblclick', function() {
+				element.bind('click', function() {
 									
 					$.ajax({
 			 		url: '../../views/Calendario/ContCal.php',

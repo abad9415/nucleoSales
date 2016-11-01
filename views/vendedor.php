@@ -15,6 +15,7 @@ if(!isset($_SESSION['session']))
 //echo $datosConexionBD[3];
 
 					$idvendedor=$_SESSION['idvendedor'];
+					
 					try {
 							$conexion = new PDO('mysql:host=localhost;dbname='.$datosConexionBD[3], $datosConexionBD[1], $datosConexionBD[2]);
 
@@ -30,6 +31,7 @@ foreach ($resultado as $row) {
 	$nombreVendedor = $row['nombreusuario'];
 	$apellidoVendedor = $row['apellidoP'];
 	$foto = $row['foto'];
+	$Correo=$row['correo'];
 }
 if($foto == ""){
 	$foto = 'perfil.jpg';
@@ -41,6 +43,7 @@ if($foto == ""){
 	
     <title>Ventas</title>
 	<meta charset="UTF-8">  
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
 	<!--<link rel="stylesheet" href="/css/bulma.css">-->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="../js/menu.js"></script>
@@ -89,15 +92,13 @@ if($foto == ""){
 		 <div class="cabezera-red7-vendedor">
 		 		<img src="http://red-7.com.mx/images/icon.png">
 		 </div>
-
-			
 						
 						
 <div class="MenuPrincipalEAT" id="ConentenMenuPrincipalVendedor">
 	<div class="content-items-menu-vendedor">
 		<div class="content-img-personal-vendedor">
 				<div class="datos-verndedor">
-					<div class="content-img-vendedor" style='background-image: url("../img/vendedores/<?=$foto;?>");'>
+					<div id="ImgVendedorPrincipal" class="content-img-vendedor" style='background-image: url("../img/vendedores/<?=$foto;?>");'>
 					</div>
 					<span class="txt-nombre-vendedor"><?=$nombreVendedor . " " .$apellidoVendedor;?></span>
 				</div>
@@ -128,12 +129,15 @@ if($foto == ""){
 					</div>
 				</span>
 
+			
+			<!--
 				<span id= "reportes" class="btn-menu-vendedor">
 					<div class="content-elementos-menu-vendedor">
 						<span  class="icon-calendar icono-menu-principal-vendedor"></span>  <span class="texto-menu-vendedor">Reportes</span>
 					</div>
 				</span>
 
+				-->
 				<span id= "configGeneral" class="btn-menu-vendedor">
 					<div class="content-elementos-menu-vendedor">
 						<span  class="icon-cog icono-menu-principal-vendedor"></span>  <span class="texto-menu-vendedor">Configuración</span>
@@ -151,6 +155,7 @@ if($foto == ""){
 		<div id="content" ></div>
 	</div>
 	 <script>	
+		 
 		 var $burguerButton = document.getElementById('btnMostrarMenuVendedor');
       var $menu = document.getElementById('ConentenMenuPrincipalVendedor');
 

@@ -122,6 +122,20 @@
             					<input type="text" name="correo" id="correo" class="form-control" >
 											</div>
 									 </div>
+								<br>
+									<div class="row" align="Center">
+											 <div class="modalrenglones" >
+											<div class="col-md-3 col-md-offset-3">
+            					<label for="recipient-name" class="control-label">Celular</label>
+            					<input type="text" name="telefono" id="telefono" class="form-control" >
+											</div>
+											<div class="col-lg-3">
+            					<label for="recipient-name" class="control-label">Otro Telefono</label>
+            					<input type="text" name="telefono2" id="telefono2" class="form-control" >
+											</div>
+									 </div>
+								</div>
+								
 								
 								<br>
 								
@@ -157,8 +171,8 @@
 						</div>
 								
 								</br>
-					 	<div class="modalrenglones">
-											<div class="col-lg-3">
+					 	<div class="modalrenglones" >
+											<div class="col-lg-3 col-md-offset-2">
             					<label for="recipient-name" class="control-label">Usuario</label>
             					<input type="text" name="user" id="user" class="form-control" >
 											</div>
@@ -170,6 +184,7 @@
             					<label for="recipient-name" class="control-label">Comision %</label>
             					<input type="number" step="any" name="comision"  id="comision" class="form-control" >
 											</div>
+							<br>
 						</div >
 							</div>
 							</div>

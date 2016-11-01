@@ -38,6 +38,10 @@ $contactos->apeMaternoContacto = $_POST['apeMaternoContacto'];
 $contactos->telefonoContacto = $_POST['telefonoContacto'];
 $contactos->correoContacto = $_POST['correoContacto'];
 $contactos->cargoContacto = $_POST['cargoContacto'];
+$contactos->facebookContacto = $_POST['facebookContacto'];
+$contactos->twitterContacto = $_POST['twitterContacto'];
+$contactos->correoalternativo = $_POST['correoAlternativoContacto'];
+$contactos->celular = $_POST['celularContacto'];
 
 
 //$contactos->montoOportunidad = $_POST['montoOportunidad'];

@@ -1,6 +1,6 @@
 <?php
-include '../../conexionBD.php';
-require '../../lib/prospectos.php';
+include '../../../conexionBD.php';
+require '../../../lib/prospectos.php';
 $prospectos = new prospectos($datosConexionBD);
 $vendedorRow = $prospectos->consultarVendedorXId();
 foreach($vendedorRow as $row){

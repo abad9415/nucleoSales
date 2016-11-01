@@ -9,7 +9,10 @@
 				var $correoContacto;
         var $cargoContacto;
 				var $ultimoIdContacto;
-        
+				var $facebookContacto;
+				var $twitterContacto;
+				var $correoalternativo;
+        var $celular;
         //Declaramos el método constructor
 		 function __construct($datosConexionBD){
 		 	$this->datosConexionBD=$datosConexionBD;
@@ -31,7 +34,11 @@
 								apellidoP,
 								telefono,
 								correo,
-								cargo)
+								cargo,
+								correoalternativo,
+								facebook,
+								twitter,
+								celular)
 								VALUES (NULL,
 								'".$this->sexoContacto."',
 								'".$this->nombreContacto."',
@@ -39,7 +46,11 @@
 								'".$this->apePaternoContacto."',
 								'".$this->telefonoContacto."',
 								'".$this->correoContacto."',
-								'".$this->cargoContacto."')";
+								'".$this->cargoContacto."',
+								'".$this->correoalternativo."',
+								'".$this->facebookContacto."',
+								'".$this->twitterContacto."',
+								'".$this->celular."')";
 							$resultado=$mysqli->query($query);
 							if (!$resultado) {
 								 return (printf ("Errormessage: %s\n", $mysqli->error));
@@ -143,7 +154,11 @@
 										apellidoP = '".$this->apePaternoContacto."', 
 										telefono = '".$this->telefonoContacto."', 
 										correo = '".$this->correoContacto."',
-										cargo = '".$this->cargoContacto."'
+										cargo = '".$this->cargoContacto."',
+										correoalternativo = '".$this->correoalternativo."', 
+										facebook = '".$this->facebookContacto."',
+										twitter = '".$this->twitterContacto."',
+										celular = '".$this->celular."'
 									WHERE idcontacto = '".$this->idcontacto."' ";
 				
 						$resultado = $mysqli->query($query);

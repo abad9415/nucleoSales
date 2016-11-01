@@ -1,5 +1,4 @@
 <?php
-
 //incluimos el archivo de configuracion de la BD
 include '../../conexionBD.php';
 //requerimos de la clase prospectos que esta en el siguiente archivo
@@ -19,6 +18,10 @@ $vendedor->colonia= $_POST['colonia'];
 $vendedor->ciudad= $_POST['ciudad'];
 $vendedor->user= $_POST['user'];
 $vendedor->password= $_POST['password'];
+$vendedor->telefono= $_POST['telefono'];
+$vendedor->telefono2= $_POST['telefono2'];
+
+
 $vendedor->agregarvendedor();
 
 //PARTE COMISIONES
@@ -30,6 +33,8 @@ $vendedor->idvendedor = $ultimoVendedor;
 $vendedor->comision= $_POST['comision'];
 $vendedor->altaComisionVendedorNuevo();
 //PARTE COMISIONES
+
+
 
 
 

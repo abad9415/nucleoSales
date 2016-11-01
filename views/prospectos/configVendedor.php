@@ -6,11 +6,14 @@
 				</div>
 		</span>
 		
+		
+		<!--
 		<span id="configCotizacion" class="btn-menu-vendedor green submenu">
 				<div class="content-elementos-menu-vendedor txt-white">
 					<span  class="icon-file-text2 icono-menu-principal-vendedor"></span> <span class="texto-menu-vendedor">Cotización</span>
 				</div>
 		</span>
+	-->
 </div>
   
   <div id="cargarConfig"></div>

@@ -13,7 +13,7 @@ foreach($consultarArchivoXIdRow as $row){
   $nombreArchivo = $row['archivo'];
 }
 header("Content-disposition: attachment; filename=$nombreArchivo");
-$mime = mime_content_type("$nombreArchivo");
-header("Content-type: $mime");
+// $mime = mime_content_type("$nombreArchivo");
+// header("Content-type: $mime");
 readfile("../../../files/cotizacion/$idprospecto/$idOportunidad/$nombreArchivo");
 ?>

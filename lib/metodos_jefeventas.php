@@ -17,6 +17,8 @@ class jefeventas{
 	var $descripcionComision;
 	var $comision;
 	var $idComision;
+	var $telefono;
+	var $telefono2;
 
 
 	
@@ -96,7 +98,11 @@ function __construct($datosConexionBD){
 													colonia='".$this->colonia."',
 													ciudad='".$this->ciudad."',
 													user='".$this->user."',
-													password='".$this->password."'
+													password='".$this->password."',
+													telefono='".$this->telefono."',
+													telefono2='".$this->telefono2."'
+													
+													
 													Where idvendedor=".$this->idvendedor;//sentencia de SQL para realizar una consulta
 						$resultado = $mysqli->query($query);
 						if(!$resultado){//If es una condicional
@@ -119,7 +125,7 @@ function __construct($datosConexionBD){
 							printf("Error de conexión: %s\n", mysqli_connect_error());
 							exit();
 						}
-						$query = "INSERT INTO vendedor (nombreusuario,apellidoM,apellidoP,correo,calle,numerodomicilio,colonia,ciudad,user,password,idtipousuario)
+						$query = "INSERT INTO vendedor (nombreusuario,apellidoM,apellidoP,correo,calle,numerodomicilio,colonia,ciudad,user,password,telefono,telefono2,idtipousuario)
 						VALUES (
 						'".$this->nombre."',
 						'".$this->apm."',
@@ -131,6 +137,8 @@ function __construct($datosConexionBD){
 						'".$this->ciudad."',
 						'".$this->user."',
 						'".$this->password."',
+						'".$this->telefono."',
+						'".$this->telefono2."',
 						
 						1);";//sentencia de SQL para realizar una consulta
 						$resultado = $mysqli->query($query);
@@ -154,7 +162,7 @@ function __construct($datosConexionBD){
 						}
 					switch ($IDV){
 						case 0:
-									$query = "SELECT vendedor.nombreusuario, prospecto.nombre, oportunidad.fechadeetapa, oportunidad.monto
+									$query = "SELECT prospecto.idprospecto,vendedor.nombreusuario, prospecto.nombre, oportunidad.fechadeetapa, oportunidad.monto
 									FROM oportunidad
 									INNER JOIN etapadeventa ON oportunidad.idetapa = etapadeventa.idetapa
 									INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto

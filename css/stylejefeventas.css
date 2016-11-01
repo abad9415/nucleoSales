@@ -8,7 +8,10 @@
   
 }
 
+.modalrenglones{
+  
 
+}
 
 
 .circulo {
@@ -205,5 +208,51 @@ table tr{
 }
   
 }
+
+
+/*Estilos Abad*/
+/*Menu comisiones*/
+.navEAT {
+  text-align: left;
+  margin: 0;
+}
+.li-EAT:hover {
+  background: #2F7455;
+}
+.navEAT ul, .navEAT li {
+  list-style:none;
+}
+
+.li-EAT {
+  color: white;
+  text-align: left;
+  margin: 0;
+  background: rgba(8, 166, 95, .8);
+}
+.li-EAT h4 {
+  padding: 10px 10px;
+  color: white;
+  margin: 0;
+  
+}
+.li-EAT ul {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: green;
+  display: none;
+}
+.li-EAT ul li {
+  padding: 5px 5px;
+}
+.li-EAT ul li:hover {
+  background: #cacaca;
+}
+.navEAT li:hover > ul{
+  display: block;
+}
+/*/Menu comisiones*/
+/*/Estilos Abad*/
 
     

@@ -1,5 +1,11 @@
 <?php
+$mensaje = $_POST['mensaje'];
+$Prospecto = $_POST['Prospecto'];
+$Correo = $_POST['Correo'];
+$RFC=$_POST['rfc'];
+$Ciudad=$_POST['ciudad'];
 require_once('PHPMailerAutoload.php');
+
 $mail = new PHPMailer();
 
 //Enable SMTP debugging. 
@@ -7,27 +13,25 @@ $mail->SMTPDebug = 3;
 //Set PHPMailer to use SMTP.
 $mail->isSMTP();            
 //Set SMTP host name                          
-$mail->Host = "smtp.gmail.com";
+$mail->Host = "mail.red-7.com.mx";
 //Set this to true if SMTP host requires authentication to send email
 $mail->SMTPAuth = true;                          
 //Provide username and password     
-$mail->Username = "edgar.nok@gmail.com";                 
-$mail->Password = "TETRIS13";                           
-//If SMTP requires TLS encryption then set it
- $mail->SMTPSecure = 'tls';            
+$mail->Username = "sistemaventas@red-7.com.mx";                 
+$mail->Password = "@246810";                           
 //Set TCP port to connect to 
-$mail->Port = 587;                                   
+$mail->Port = 787;                                   
 
-$mail->From = "edgar.nok@gmail.com";
-$mail->FromName = "Edgar Hernandez";
+$mail->From = "sistemaventas@red-7.com.mx";
+$mail->FromName = "Ventas Red7";
 
-$mail->addAddress("marcos@red-7.com.mx", "Recepient Name");
+$mail->addAddress($Correo, "Recepient Name");
 
 $mail->isHTML(true);
 
-$mail->Subject = "Subject Text";
-$mail->Body = "<i>Mail body in HTML</i>";
-$mail->AltBody = "This is the plain text version of the email content";
+$mail->Subject = "Nueva Alta";
+$mail->Body = $mensaje."<br> Prospecto: ".$Prospecto."<br> RFC: ".$RFC."<br> Ciudad: ".$Ciudad;
+$mail->AltBody ="";
 
 if(!$mail->send()) 
 {

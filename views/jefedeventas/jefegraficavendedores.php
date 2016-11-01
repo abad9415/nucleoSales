@@ -40,7 +40,7 @@ $(function () {
                   etapP= this.name;
 										 $.ajax({
 															type: "POST",
-															url: "LToportunidades.php",
+															url: "../../views/jefedeventas/LToportunidades.php",
 															cache: false,
 															data: "variableL="+etapP+"&IDVendedor="+'<?php echo $IDV?>',
 															success: function(datos){

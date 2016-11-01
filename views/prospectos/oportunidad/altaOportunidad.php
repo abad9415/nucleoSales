@@ -88,7 +88,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
   	<?php
 							if($actionBtn == "Modificar"){
 								?>
-									<div class="circulo-material btn-agregar-plus"><span class="icon-pencil" id="activarModificar"></span></div>
+									<div id="activarModificar" class="circulo-material btn-agregar-plus"><span class="icon-pencil"></span></div>
 								<?php
 							}
 				?>
@@ -114,7 +114,28 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 							</select>
 
 							<label for="periodosPagosOportunidad">Definir los pagos:</label>
-							<input type="text" id="periodosPagosOportunidad" name="periodosPagosOportunidad" class="form-control inputOportunidad" disabled placeholder="Renta Mensual Precio Educativo." value="<?=$periodosPagosOportunidad;?>">
+									<select id="periodosPagosOportunidad" name="periodosPagosOportunidad" class="form-control inputOportunidad" disabled>
+												<?php
+													if (empty($periodosPagosOportunidad)) {}else{
+														?>
+																<option value="Mensual">Mensual</option>
+																<option value="Semestral">Semestral</option>
+																<option value="Anual">Anual</option>
+														<?php
+															}
+															?>
+															<?php
+															 while($row = $consultarOportunidadesXprospectoRow->fetch_assoc()) {
+																 ?><option value="<?$row['periodosPagos'];?>"><?$row['periodosPagos'];?></option>
+																<?php  
+																}
+														?>
+										
+										
+										
+										
+									</select>
+						
 
 								<label for="monedaOportunidad">Moneda</label>
 								<select name="monedaOportunidad" class="form-control inputOportunidad" id="monedaOportunidad" disabled>
@@ -178,7 +199,8 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 			</div>
       <div class="content-btns-oportunidades">
 				<input type="hidden" id="idprospecto" name ="idprospecto" value="<?=$idprospecto;?>">
-				<input type="submit" value="<?=$actionBtn;?>" name="enviar" class="btn btn-primary" id="btnActionGeneral">
+				<input type="hidden" id="actionBtn" name ="actionBtn" value="<?=$actionBtn;?>">
+				<input type="submit" value="<?=$actionBtn;?>" name="enviar" class="btn btn-primary inputOportunidad" id="btnActionGeneral" disabled>
 				<div id="descargarReportes" style="display: none;" class="">
           <input type="file" id="archivoCotizacion" name="archivoCotizacion" class="form-control inputOportunidad" disabled>
 <!-- 					<span id="descargarCotizacion" class="btn btn-danger"><span class="icon-file-pdf">Cotización</span></span> -->
@@ -275,6 +297,12 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 			//window.location.replace("../../../actions/prospectos/oportunidades/descargarArchivo.php", {idArchivoOportunidad: $(this).val(), idprospecto: $("#idprospecto").val(), idOportunidad: $("#idOportunidad").val() });		
 			});
       /*Descargar el archivo de la cotizacion*/
+			
+			//Buscamos la definicion de pagos para seleecionarla
+			if($("#actionBtn").val() == 'Modificar'){
+      $( "option:contains('<?=$periodosPagosOportunidad;?>')" ).attr('selected','selected');
+      $( "option:contains('<?=$idetapa;?>')" ).attr('selected','selected');
+  		}
     });
 </script>
 

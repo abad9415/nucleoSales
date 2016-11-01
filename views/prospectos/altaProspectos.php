@@ -5,6 +5,22 @@
 	// Requerimos la clase de usuarios
 	require '../../lib/prospectos.php';
   //Instanciamos nuestra clase usuarios
+	$idvendedor=$_SESSION['idvendedor'];
+					try {
+							$conexion = new PDO('mysql:host=localhost;dbname=nucleoSales;charset=utf8', 'admin', '7R@server');
+
+							$resultado = $conexion->prepare("SELECT * FROM vendedor WHERE idvendedor ='".$idvendedor."' ");
+						$resultado->execute();
+							
+
+					} catch (PDOException $e) {
+							
+					} 
+
+foreach ($resultado as $row) {
+	$Correo=$row['correo'];
+}
+
 	$prospectos = new prospectos($datosConexionBD);
   $nombreEmpresa = null;
   $calleEmpresa = null;
@@ -137,16 +153,30 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <label for="telefonoContacto">Telefono</label>
-                    <input type="tel" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto" required>
-
-                    <label for="correoContacto">Correo</label>
-                    <input type="email" id="correoContacto" name="correoContacto" class="form-control inputContacto" required>
-
-                    <label for="cargoContacto">Cargo</label>
+										<label for="cargoContacto">Cargo</label>
                     <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto" required>
 									
+                    <label for="telefonoContacto">Telefono</label>
+                    <input type="tel" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto" required>
+									
+										<label for="celularContacto">Celular</label>
+                    <input type="tel" id="celularContacto" name="celularContacto" class="form-control inputContacto" value="<?=$celular;?>">
+
+                    <label for="correoContacto">Correo Empresarial</label>
+                    <input type="email" id="correoContacto" name="correoContacto" class="form-control inputContacto" required>
+									
                 </div>
+								<div class="col-md-4 col-sm-6">
+										<label for="correoAlternativoContacto">Correo personal</label>
+                    <input type="email" id="correoAlternativoContacto" name="correoAlternativoContacto" class="form-control inputContacto" value="<?=$correoAlternativo;?>">
+										
+										<label for="facebookContacto">Facebook</label> 
+										<input type="text" id="facebookContacto" name="facebookContacto" class="form-control inputContacto" value="<?=$facebook;?>">
+										
+										<label for="tiwtterContacto">Twitter</label> 
+										<input type="text" id="twitterContacto" name="twitterContacto" class="form-control inputContacto" value="<?=$tiwtter;?>">
+								</div>
+								<input type="hidden" id="correoVendedor" name="correoVendedor" value="<?php echo $Correo ?>" class="form-control">
 								<input type="hidden" id="cargoContacto" name="cargoContacto" class="form-control">
                 </div>
 							 	<div class="col-xs-12">

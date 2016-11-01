@@ -104,6 +104,7 @@ for($xa=1;$xa<=$xe;$xa++)
 			</article>
 			
 <script>
+	 $('.dropdown-toggle').dropdown();
  $("#MapaBtn").css({
 						"border-bottom-style": "solid",
 						"border-bottom-color": "rgba(255,255,255,0)"

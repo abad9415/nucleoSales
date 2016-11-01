@@ -23,6 +23,10 @@ $contactos->telefonoContacto = $_POST['telefonoContacto'];
 $contactos->correoContacto = $_POST['correoContacto'];
 $contactos->cargoContacto = $_POST['cargoContacto'];
 $contactos->idcontacto = $_POST['idcontacto'];
+$contactos->facebookContacto = $_POST['facebookContacto'];
+$contactos->twitterContacto = $_POST['twitterContacto'];
+$contactos->correoalternativo = $_POST['correoAlternativoContacto'];
+$contactos->celular = $_POST['celularContacto'];
 
 $alert = $contactos->actualizarContacto();
 

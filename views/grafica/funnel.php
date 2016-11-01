@@ -63,7 +63,7 @@ $(function () {
             enabled: false
         },
         series: [{
-            name: 'Prospectos',
+            name: 'Total',
             data: [
               <?php $id=1;
               while($row = $consultarEtapas->fetch_assoc()) { 
@@ -74,6 +74,7 @@ $(function () {
                 ['<?php echo $row['nombre']; ?>', <?php echo $row2['Netapas'] ?>],
               
                <?php $id++; } ?>
+							
             ]
         }]
     });

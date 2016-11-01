@@ -54,6 +54,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $ultimoIdOportunidad;
 			var $archivo;
 			var $idarchivosOportunidad;
+		
         
           //Declaramos el método constructor
 		 function __construct($datosConexionBD){
@@ -650,7 +651,7 @@ if(!isset($_SESSION['idvendedor']))
 				$nroLotes = $this->nroLotes;
 					$idvendedor=$_SESSION['idvendedor'];
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM prospecto WHERE idvendedor = $idvendedor LIMIT $limit, $nroLotes");
 						$resultado->execute();
@@ -669,7 +670,7 @@ if(!isset($_SESSION['idvendedor']))
 				$ultimaFecha = $this->ultimaFecha;
 					$idvendedor=$_SESSION['idvendedor'];
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM prospecto WHERE idvendedor = $idvendedor AND fechadecreacion BETWEEN '$primeraFecha' AND '$ultimaFecha' LIMIT $limit, $nroLotes");
 						$resultado->execute();
@@ -718,7 +719,7 @@ if(!isset($_SESSION['idvendedor']))
 			public function consultarConfigCotizacionXvendedor(){
 					$idvendedor=$_SESSION['idvendedor'];
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM configCotizacion WHERE idvendedor = $idvendedor ");
 						$resultado->execute();
@@ -800,7 +801,7 @@ if(!isset($_SESSION['idvendedor']))
 			public function validarRFC(){
 					$rfcEmpresa = $this->rfcEmpresa;
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM prospecto WHERE rfc = '$rfcEmpresa' ");
 						$resultado->execute();
@@ -921,7 +922,7 @@ if(!isset($_SESSION['idvendedor']))
 				$idOportunidad = $this->idOportunidad;
 					$idvendedor=$_SESSION['idvendedor'];
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idoportunidad = $idOportunidad");
 						$resultado->execute();
@@ -935,7 +936,7 @@ if(!isset($_SESSION['idvendedor']))
 			public function consultarArchivosCotizacionXId(){
 				$idarchivosOportunidad = $this->idarchivosOportunidad;
 					try {
-							$conexion = new PDO('mysql:host=localhost;dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idarchivosOportunidad = $idarchivosOportunidad");
 						$resultado->execute();

@@ -48,7 +48,7 @@ if(!isset($_SESSION['session']))
 		 	<div class="content-items-menu-vendedor">
 								<div class="row" id="encabezado">
 									 <div id="fotoven">
-											<img height="100px" src="../../recursos/imagenes/perfil.jpg" alt="..." class="img-circle">
+											<div id="ImgVendedorPrincipal" class="content-img-vendedor" style='background-image: url("../img/vendedores/<?=$foto;?>");'></div>
 									 </div>
 									 <div id="personal">
 												 <h2> <span class="label label-primary">Jefe de Ventas </span></h2>
@@ -57,7 +57,7 @@ if(!isset($_SESSION['session']))
 													<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Opciones <span class="caret"></span>
 													</button>
 													<ul class="dropdown-menu">
-														<li><a href="#">Editar informacion</a></li>
+														<li id="editarInfoJefe"><a>Editar informacion</a></li>
 														<li><a  id="cerrar" href="#">Cerrar Sesion</a></li>
 													</ul>
 										</div>
@@ -245,6 +245,10 @@ if(!isset($_SESSION['session']))
 			
       gestos.on('swipeleft', hideMenu);
       gestos.on('swiperight', showMenu);
+		
+		$("#editarInfoJefe").click(function(){
+        $("#content").load( "../../views/jefedeventas/config/configPhotoUser.php" );
+	});	
 	</script>
 </body>
 </html>

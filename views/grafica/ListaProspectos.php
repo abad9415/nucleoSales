@@ -18,7 +18,7 @@ include '../../conexionBD.php';
 							 	<th>ID</th>
                 <th>Nombre Prospecto</th>
 							 	<th>Monto</th>
-                <th>Fecha Inicio Etapa</th>
+                <th>Fecha</th>
                 
               </tr>
            </thead>

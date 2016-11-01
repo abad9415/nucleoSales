@@ -133,8 +133,11 @@ if($actionBtn == "Modificar"){
 							</select>
 
 							<label for="periodosPagosOportunidad">Definir los pagos:</label>
-							<input type="text" id="periodosPagosOportunidad" class="form-control inputOportunidad" disabled placeholder="Renta Mensual Precio Educativo." value="<?=$periodosPagosOportunidad;?>">
-
+									<select id="periodosPagosOportunidad" name="periodosPagosOportunidad" class="form-control inputOportunidad" disabled>
+											<option value="Mensual">Mensual</option>
+											<option value="Semestral">Semestral</option>
+											<option value="Anual">Anual</option>
+									</select>
 								<label for="monedaOportunidad">Moneda</label>
 								<select name="monedaOportunidad" class="form-control inputOportunidad" id="monedaOportunidad" disabled>
 											<?php

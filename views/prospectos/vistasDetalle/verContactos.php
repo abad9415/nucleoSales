@@ -105,6 +105,7 @@ $xg2=1;
 			</article>
 				<!------ Form Contacto  -------><!------ Form Contacto  ------->
 				<script>
+					$('.dropdown-toggle').dropdown();
  $("#MapaBtn").css({
 						"border-bottom-style": "solid",
 						"border-bottom-color": "rgba(255,255,255,0)"

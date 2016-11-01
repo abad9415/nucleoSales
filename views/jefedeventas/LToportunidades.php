@@ -2,19 +2,12 @@
 include '../../conexionBD.php';
   //requerimos de la clase prospectos que esta en el siguiente archivo
  	require '../../lib/metodos_jefeventas.php';
-	$etapa =$_POST['variableL']	;
+	$miVariable= $_POST['variableL'];
 	$IDV=$_POST['IDVendedor'];
-
   //incluimos el archivo de configuracion de la BD
-
   $et = new jefeventas($datosConexionBD);
   $Listado = $et->Listadototal($miVariable,$IDV);  
 ?>
-
-
-	
-
-
 
   <div class="contentList">
 
@@ -23,33 +16,38 @@ include '../../conexionBD.php';
 <table class="table table-hover tableEAT">
            <thead>
              <tr>
-							   <th>Nombre Vendedor</th>
+							  <th>ID</th> 
                 <th>Prospecto</th>
 							 	<th>Monto</th>
                 <th>Fecha de Etapa</th>
+							 <th>Nombre Vendedor</th>
                 
               </tr>
            </thead>
-                  
+                <tbody>  
            <?php
            while($row = $Listado->fetch_assoc()) { ?>
                 <tr>
-								<td><?= $row['nombreusuario']; ?></p></a></td>
-                <td><?= $row['nombre']; ?></p></a></td>
+								<td><p><?= $row['idprospecto']; ?></p></td>
+                <td><?= $row['nombre']; ?></td>
                 <td>$<?=$row['monto'];?></td>
                 <td><?=$row['fechadeetapa'];?></td>
+								<td><?= $row['nombreusuario']; ?></td>
               </tr>
            <?php
            } ?>
+					</tbody>
           </table>
 
   </div>
+
 <script>
+	
 $('tbody').find('tr').click(function(e){
 	var id=$(this).find('p').text();
 	var etapa=0;
 	
-	switch('<?php echo $etapa ?>'){
+	switch('<?php echo $miVariable ?>'){
 		case 'Analizando': 
 				etapa=1;
 			break;
@@ -102,4 +100,3 @@ $('tbody').find('tr').click(function(e){
 		  </div>
 		</div>
 	</div>
-

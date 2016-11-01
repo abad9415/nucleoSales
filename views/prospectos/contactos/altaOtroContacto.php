@@ -26,6 +26,10 @@ if (empty($idcontacto)) {
 		$telefono = "";
 		$correo = "";
 		$cargo = "";
+		$celular= "";
+	$correoAlternativo= "";
+	$facebook = "";
+	$twitter = "";
 }else{
 	$actionBtn = "Modificar";
 	$contactos->idcontacto = $idcontacto;
@@ -36,7 +40,11 @@ if (empty($idcontacto)) {
 		$apellidoP = $row['apellidoP'];
 		$apellidoM = $row['apellidoM'];
 		$telefono = $row['telefono'];
+		$celular = $row['celular'];
 		$correo = $row['correo'];
+		$correoAlternativo = $row['correoalternativo'];
+		$facebook = $row['facebook'];
+		$tiwtter = $row['twitter'];
 		$cargo = $row['cargo'];
 	}
 }
@@ -70,21 +78,35 @@ if (empty($idcontacto)) {
 
                     <label for="apeMaternoContacto">Apellido Materno</label>
                     <input type="text" id="apeMaternoContacto" name="apeMaternoContacto" class="form-control inputContacto" value="<?=$apellidoM;?>">
-                </div>
+                		
+										<label for="cargoContacto">Cargo</label>
+                    <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto" value="<?=$cargo;?>">
+							</div>
 
                 <div class="col-md-6 col-sm-6">
                     <label for="telefonoContacto">Telefono</label>
-                    <input type="text" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto" value="<?=$telefono;?>">
+                    <input type="tel" id="telefonoContacto" name="telefonoContacto" class="form-control inputContacto" value="<?=$telefono;?>">
+									
+										<label for="celularContacto">Celular</label>
+                    <input type="tel" id="celularContacto" name="celularContacto" class="form-control inputContacto" value="<?=$celular;?>">
 
-                    <label for="correoContacto">Correo</label>
-                    <input type="text" id="correoContacto" name="correoContacto" class="form-control inputContacto" value="<?=$correo;?>">
+                    <label for="correoContacto">Correo Empresarial</label>
+                    <input type="email" id="correoContacto" name="correoContacto" class="form-control inputContacto" value="<?=$correo;?>">
 
-                    <label for="cargoContacto">Cargo</label>
-                    <input type="text" id="cargoContacto" name="cargoContacto" class="form-control inputContacto" value="<?=$cargo;?>">
+                   	<label for="correoAlternativoContacto">Correo personal</label>
+                    <input type="email" id="correoAlternativoContacto" name="correoAlternativoContacto" class="form-control inputContacto" value="<?=$correoAlternativo;?>">
+                  	
+										<label for="facebookContacto">Facebook</label> 
+										<input type="text" id="facebookContacto" name="facebookContacto" class="form-control inputContacto" value="<?=$facebook;?>">
+									
+										<label for="tiwtterContacto">Twitter</label> 
+										<input type="text" id="twitterContacto" name="twitterContacto" class="form-control inputContacto" value="<?=$tiwtter;?>">
                 </div>
 								<input type="hidden" id="cargoContacto" name="cargoContacto" class="form-control">
                 
-							 	<div class="col-xs-12">
+							 	
+							
+							<div class="col-xs-12">
                        <input type="submit" value="<?=$actionBtn;?>" name="enviar" class="pull-right btn btn-primary" id="btnActionGeneral">
                 </div>
             </form>
@@ -111,12 +133,17 @@ if (empty($idcontacto)) {
                          '&correoContacto='+$("#correoContacto").val()+
                          '&cargoContacto='+$("#cargoContacto").val()+
                          '&idcontacto='+$("#idcontacto").val()+
-           '&idprospecto='+$("#idprospecto").val(),
+				 								 '&facebookContacto='+$("#facebookContacto").val()+
+				 								 '&twitterContacto='+$("#twitterContacto").val()+
+				 				 				 '&celularContacto='+$("#celularContacto").val()+
+				 								 '&correoAlternativoContacto='+$("#correoAlternativoContacto").val()+
+				 								 '&idprospecto='+$("#idprospecto").val(),
 				success: function(data){
+				
         //alert(data.alert);
 					swal(data.alert + "!", "", "success")
-          $("#conentDetallePros").load("/views/prospectos/vistasDetalle/verContactos.php?idprospecto=" + $("#idprospecto").val());
-				}	
+         $("#conentDetallePros").load("/views/prospectos/vistasDetalle/verContactos.php?idprospecto=" + $("#idprospecto").val());
+				}
 			});
 
 

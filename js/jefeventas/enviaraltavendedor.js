@@ -72,26 +72,21 @@ $("#contenedorvendedores").load("prospectosvendedor.php?idven="+$(this).find('p'
 															url: "../../actions/jefeventas/altavendedor.php",
 															cache: false,
 															data: $("#formaltvendedor").serialize(),
-															success: function(data){
-													
-														
-		  										
+																success: function(data){
 																
-																
-																
-	swal({
-  title: "Guardado!",
-  type: "success",
-  confirmButtonClass: "btn-success",
-  confirmButtonText: "ok",
-  closeOnConfirm: false
-},
-function(){
-  location.reload();
-});
-																
-																
-															}
+														swal({
+																	title: "Guardado!",
+																	type: "success",
+																	confirmButtonClass: "btn-success",
+																	confirmButtonText: "ok",
+																	closeOnConfirm: false
+																},
+																function(){
+																	location.reload();
+																});
+ 																																			
+															
+																}
 															});
 		
 				//	document.getElementById("#formaltvendedor").reset()	
@@ -107,6 +102,7 @@ function(){
 															cache: false,
 															data: $("#formalteditvendedor").serialize(),
 															success: function(data){
+																
 														swal({
 																	title: "Modificado!",
 																	type: "success",
@@ -129,7 +125,7 @@ function(){
 		
 		$("#eliminar").click(function(){
 			var idv=$("#idvendedor").val();
-			alert(idv);
+			
 			
 			
 			$.ajax({
@@ -137,11 +133,22 @@ function(){
 															url: "../../actions/jefeventas/eliminarVendedor.php",
 															cache: false,
 															data: "idven="+idv,
-															success: function(data){
+																success: function(data){
+																
+																
+														swal({
+																	title: "Eliminado!",
+																	type: "error",
+																	confirmButtonClass: "btn-success",
+																	confirmButtonText: "ok",
+																	closeOnConfirm: false
+																},
+																function(){
+																	location.reload();
+																});
+ 																																			
 															
-																location.reload();
-													
-															}
+																}
 															});
 			
 			

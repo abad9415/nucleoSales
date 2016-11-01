@@ -42,8 +42,26 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 	  $("#content").load("../../views/jefedeventas/jefevendedor.php");
 	});
 	
+	function correo(cadena){
+		var asd=0;
+		while(asd>4){
+			alert(cadena[asd])
+			asd++;
+		}
+																	/*	$.ajax({
+       														  	type: "POST",
+       														  	url: "../../PHPMailer/email.php",
+        														 	cache: false,
+        														 	data: "Correo="+cadena[1]+"&Prospecto="+cadena[0]+"&rfc="+cadena[2]+"&ciudad="+cadena[3]+"&mensaje=Se te Asigno Nuevo prospecto",
+       														  	success: function(datos){
+        														 	// alert(datos);				
+         															}	
+       													});*/
+	}
 	
 	$("#formchange").submit(function(){
+		var datosCorreo;
+		var res;
 			 $.ajax({
 															type: "POST",
 															url: "../../actions/jefeventas/cambiarvendedor.php",
@@ -51,16 +69,24 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 															data: $("#formchange").serialize(),
 				 
 															success: function(data){
-																
-															
-												
+																datosCorreo=data;
+																res = datosCorreo.split("*");
+																correo(res);
 															}
 															});
+		
+
+		
 	
-		swal({
-  title: "Sweet!",
-  text: "Here's a custom image.",
-  imageUrl: 'thumbs-up.jpg'
+			swal({
+  title: "Guardado!",
+  type: "success",
+  confirmButtonClass: "btn-success",
+  confirmButtonText: "ok",
+  closeOnConfirm: false
+},
+function(){
+  location.reload();
 });
 			// $("#content").load("../../views/jefedeventas/jefevendedor.php");
 	});

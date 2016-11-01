@@ -26,6 +26,8 @@ while($row=$resultado->fetch_assoc())
     $ciudad=$row['ciudad'];
     $usuario=$row['user'];
     $password=$row['password'];
+		$telefono=$row['telefono'];
+		$telefono2=$row['telefono2'];
 }
 
 
@@ -68,6 +70,21 @@ echo '
             					<input type="text" name="correo" id="correo" class="form-control" value="'.$mail.'" >
 											</div>
 									 </div>
+									<br>
+									<div class="row" align="Center">
+											 <div class="modalrenglones" >
+											<div class="col-md-3 col-md-offset-3">
+            					<label for="recipient-name" class="control-label">Celular</label>
+            					<input type="text" name="telefono" id="telefono" class="form-control" value="'.$telefono.'">
+											</div>
+											<div class="col-lg-3">
+            					<label for="recipient-name" class="control-label">Otro Telefono</label>
+            					<input type="text" name="telefono2" id="telefono2" class="form-control" value="'.$telefono2.'">
+											</div>
+									 </div>
+								</div>
+								
+								
 								
 								<br>
 								

@@ -22,7 +22,7 @@ if(!isset($_SESSION['idvendedor']))
 							printf("Error de conexión: %s\n", mysqli_connect_error());
 							exit();
 						}
-						$query = "SELECT *FROM  `etapadeventa` ";
+						$query = "SELECT *FROM  `etapadeventa`  LIMIT 4 ";
 						$resultado = $mysqli->query($query);
             if(!$resultado){//If es una condicional
                 printf("Error Message: %s\n", $mysqli->error);//Imprime un string con el problema generado a partir de $query
@@ -71,7 +71,7 @@ if(!isset($_SESSION['idvendedor']))
 							printf("Error de conexión: %s\n", mysqli_connect_error());
 							exit();
 						}
-						$query = "SELECT COUNT( oportunidad.idetapa ) AS  'Netapas' 
+						$query = "SELECT etapadeventa.nombre,COUNT( oportunidad.idetapa ) AS  'Netapas' 
 											FROM etapadeventa 
 											INNER JOIN oportunidad ON etapadeventa.idetapa = oportunidad.idetapa 
 											INNER JOIN prospecto ON oportunidad.idprospecto = prospecto.idprospecto 

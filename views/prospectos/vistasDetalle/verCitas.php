@@ -123,6 +123,7 @@ for($i=1;$i<$xg;$i++)
 					</table>
 		</article>
 <script>
+	 $('.dropdown-toggle').dropdown();
  $("#MapaBtn").css({
 						"border-bottom-style": "solid",
 						"border-bottom-color": "rgba(255,255,255,0)"

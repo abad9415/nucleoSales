@@ -40,6 +40,10 @@ if (empty($idcontacto)) {
 		$telefono = $row['telefono'];
 		$correo = $row['correo'];
 		$cargo = $row['cargo'];
+		$celular = $row['celular'];
+		$correoAlterno = $row['correoalternativo'];
+		$facebook = $row['facebook'];
+		$twitter = $row['twitter'];
 	}
 }
 $notas->idprospecto = $idprospecto;
@@ -60,12 +64,16 @@ while($row = $consultarNotasRow->fetch_assoc()) {
   <div class="col-xs-12">
     <div class="col-xs-6">
       <p><b>Nombre: </b><?=$trato . " " . $nombre . " " . $apellidoP . " " . $apellidoM;?></p>
+			<p><b>Cargo: </b><?=$cargo;?></p>
       <p><b>Telefono: </b><?=$telefono;?></p>
+      <p><b>Celular: </b><?=$celular;?></p>
     </div>
     
     <div class="col-xs-6">
-      <p><b>Correo: </b><?=$correo;?></p>
-      <p><b>Cargo: </b><?=$cargo;?></p>
+			<p><b>Correo Empresarial: </b><?=$correo;?></p>
+      <p><b>Correo: </b><?=$correoAlterno;?></p>
+      <p><b>Facebook: </b><?=$facebook;?></p>
+      <p><b>Twitter: </b><?=$twitter;?></p>
     </div>
   </div>
   <form action="#" class="col-xs-12" id="FormNotasDetalle" method="post">

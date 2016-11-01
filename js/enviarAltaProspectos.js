@@ -43,8 +43,6 @@
 						//alert("Eres diferente aqui ejecutare la comprobacion...");
 						validarRFC();
 					}
-				
-				
         //alert("entraste Actualizar");
         var urlAction = "../../actions/actualizarProspecto.php";
       }
@@ -72,6 +70,10 @@
                          '&telefonoContacto='+$("#telefonoContacto").val()+
                          '&correoContacto='+$("#correoContacto").val()+
                          '&cargoContacto='+$("#cargoContacto").val()+
+				 								 '&facebookContacto='+$("#facebookContacto").val()+
+				 								 '&twitterContacto='+$("#twitterContacto").val()+
+				 				 				 '&celularContacto='+$("#celularContacto").val()+
+				 								 '&correoAlternativoContacto='+$("#correoAlternativoContacto").val()+
            '&idprospecto='+$("#idprospecto").val()+
            '&idcontacto='+$("#idcontacto").val(),
 				success: function(data){
@@ -81,7 +83,7 @@
         //alert("entraste guardar");
              $("#idprospecto").val(data.content);
           $("#idcontacto").val(data.details);
-          //alert(data.alert);
+          //Guardar nuevo prospecto
 					swal(data.alert, "", "success")
           
           $("#btnActionGeneral").val("Actualizar");
@@ -110,7 +112,18 @@
                $(".inputContacto").removeAttr('disabled');
              });
            });
-        
+        //correo aqui....
+					
+					 $.ajax({
+         type: "POST",
+         url: "../PHPMailer/email.php",
+         cache: false,
+         data: "Prospecto= "+$("#nombreEmpresa").val()+"&Correo="+$("#correoVendedor").val(),
+         success: function(datos){
+          //alert(datos);				
+         }
+       });
+					
       } else if (urlAction == '../../actions/actualizarProspecto.php') {
         //alert("regrese del actualizar php");
         //alert(data.alert);
