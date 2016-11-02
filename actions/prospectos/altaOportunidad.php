@@ -7,6 +7,7 @@ require '../../lib/prospectos.php';
 $prospectos = new prospectos($datosConexionBD);
 $prospectos->monedaOportunidad = $_POST['monedaOportunidad'];
 $prospectos->montoOportunidad = $_POST['montoOportunidad'];
+$prospectos->costoInstalacionOportunidad = $_POST['costoInstalacionOportunidad'];
 $prospectos->etapaOportunidad = $_POST['etapaProspecto'];
 $prospectos->idContacto = $_POST['idContacto'];
 $prospectos->ultimoIdProspecto = $_POST['idprospecto'];
@@ -14,17 +15,20 @@ $prospectos->descripcionOportunidad = $_POST['descripcionOportunidad'];
 $prospectos->periodosPagos = $_POST['periodosPagosOportunidad'];
 $comision = 0;
 $comisionInstalacion = 0;
-if($_POST['etapaProspecto'] == 6){
-  $prospectos->idVendedor = $_SESSION['idvendedor'];
+
+/*Validando y asignando comisiones*/
+ $prospectos->idVendedor = $_SESSION['idvendedor'];
   $consultarcomisionXidVendedorRow = $prospectos->consultarcomisionXidVendedor();
   while($row = $consultarcomisionXidVendedorRow->fetch_assoc()) {
        $comisionDelVendedor = $row['comision'];
        $comisionDelVendedorInstalacion = $row['comisionxinstalacion'];
   }
+if($_POST['etapaProspecto'] == 6){
   $comision = ($comisionDelVendedor * $_POST['montoOportunidad'])/100;
-  $comisionInstalacion = ($comisionDelVendedorInstalacion * $_POST['montoOportunidad'])/100;
-  
+  $comisionInstalacion = ($comisionDelVendedorInstalacion * $_POST['costoInstalacionOportunidad'])/100;
 }
+/*Validando y asignando comisiones*/
+
 $prospectos->comision = $comision;
 $prospectos->comisionInstalacion = $comisionInstalacion;
  $respuesta = $prospectos->altaOportunidad();

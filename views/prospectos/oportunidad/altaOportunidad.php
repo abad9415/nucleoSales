@@ -44,6 +44,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
         $idInicialDescripcion = 0;
         $idInicialCostos = 0;
         $periodosPagosOportunidad = "";
+				$montoInstalacion = 0;
     }else{
        	$actionBtn = "Modificar";
 	$prospectos->idOportunidad=$idOportunidad;
@@ -52,6 +53,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 	while($row = $consultarOportunidadesXprospectoRow->fetch_assoc()) {
           $descripcion = $row['descripcion'];
           $monto = $row['monto'];
+          $montoInstalacion = $row['montoinstalacion'];
           $idmoneda = $row['idmoneda'];
           $idprospecto = $row['idprospecto'];
           $idetapa = $row['idetapa'];
@@ -137,10 +139,14 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 													}
 											?>
 								</select>
+								<div id="ocultarantesdeCotizacion">
+										 <label for="costoInstalacionOportunidad">Costo de Instalacio</label>
+             				 <input type="number" min="0" id="costoInstalacionOportunidad" name="costoInstalacionOportunidad" class="form-control inputOportunidad" value="<?=$montoInstalacion;?>" disabled>
+								</div>
 					</div>
 					<div class="item-oportunidad">
 						<label for="montoOportunidad">Monto</label>
-						<input type="number" id="montoOportunidad" name="montoOportunidad" class="form-control inputOportunidad" value="<?=$monto;?>" disabled>
+						<input type="number" min="0" id="montoOportunidad" name="montoOportunidad" class="form-control inputOportunidad" value="<?=$monto;?>" disabled>
 
 
 							<label for="etapaProspecto">Etapa</label>
@@ -161,7 +167,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
 							</select>
               <label for="descripcionOportunidad">Descripcion</label>
               <input type="text" id="descripcionOportunidad" name="descripcionOportunidad" class="form-control inputOportunidad" value="<?=$descripcion;?>" disabled>
-					</div>
+						</div>
           <div id="mostrarArchivosCotizacion" class="content-archivos-cotizacion">
             <?php
 						$iarch = 0;
@@ -238,6 +244,21 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
             }
         });
       /*Etapa 3 = cotizacion*/
+			
+			/*Etapas de cotizacion en adelante*/
+			function despuesCotizacionValidar(){
+				if (parseInt($("#etapaProspecto").val()) >= 3) {
+					document.getElementById("ocultarantesdeCotizacion").style.display = "inline-block";
+				
+			 	}else{
+					document.getElementById("ocultarantesdeCotizacion").style.display = "none";
+				}
+			}
+			 despuesCotizacionValidar();
+			 $("#etapaProspecto").change(function() {
+				 despuesCotizacionValidar();
+			 });
+			/*Etapas de cotizacion en adelante*/
       
       
       /*enviar por ajax todos los datos incluyendo el archivo*/
@@ -271,7 +292,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
                     $("#conentDetallePros").load("../../../views/prospectos/vistasDetalle/verOportunidades.php?idprospecto=" + $("#idprospecto").val());
                   }
                 });
-           
+           alert("correo")
         });
       /*enviar por ajax todos los datos incluyendo el archivo*/
       

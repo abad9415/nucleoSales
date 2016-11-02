@@ -77,14 +77,16 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                         <input type="number" id="numeroEmpresa" name="numeroEmpresa" class="form-control inputProspecto" required>
                     </div>
 
+										<div class="form-group">
+                        <label for="cpEmpresa">Codigo Postal</label>
+                        <input type="number" id="cpEmpresa" name="cpEmpresa" class="form-control inputProspecto">
+                    </div>		
+								
                     <div class="form-group">
                         <label for="coloniaEmpresa">Colonia</label>
                         <input type="text" id="coloniaEmpresa" name="coloniaEmpresa" class="form-control inputProspecto" required>
                     </div>
-										<div class="form-group">
-                        <label for="cpEmpresa">Codigo Postal</label>
-                        <input type="number" id="cpEmpresa" name="cpEmpresa" class="form-control inputProspecto">
-                    </div>
+										
               </div>
               <div class="col-md-4 col-sm-6">
                    

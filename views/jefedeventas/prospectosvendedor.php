@@ -48,15 +48,16 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 			alert(cadena[asd])
 			asd++;
 		}
-																	/*	$.ajax({
+																		$.ajax({
        														  	type: "POST",
        														  	url: "../../PHPMailer/email.php",
         														 	cache: false,
-        														 	data: "Correo="+cadena[1]+"&Prospecto="+cadena[0]+"&rfc="+cadena[2]+"&ciudad="+cadena[3]+"&mensaje=Se te Asigno Nuevo prospecto",
+        														 	data: "Correo="+cadena[1]+"&Prospecto="+cadena[0]+"&rfc="+cadena[2]+
+																			"&ciudad="+cadena[3]+"&mensaje=Se te Asigno Nuevo prospecto",
        														  	success: function(datos){
         														 	// alert(datos);				
          															}	
-       													});*/
+       													});
 	}
 	
 	$("#formchange").submit(function(){
@@ -72,12 +73,11 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 																datosCorreo=data;
 																res = datosCorreo.split("*");
 																correo(res);
+																//alert(data)
 															}
-															});
-		
-
-		
-	
+															}).done(function(result) {
+				$('#modalprospectos').modal('hide')
+				//setTimeout ("$('#content').load( '../../views/Calendario/Calendario.php' );", 500); 
 			swal({
   title: "Guardado!",
   type: "success",
@@ -87,8 +87,11 @@ $('#content').load("../../views/prospectos/detalleProspecto.php?idprospecto="+$(
 },
 function(){
   location.reload();
-});
-			// $("#content").load("../../views/jefedeventas/jefevendedor.php");
+});				
+   		
+   		});
+			return false;
+		
 	});
 	
 	

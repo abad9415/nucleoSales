@@ -31,6 +31,7 @@ if(!isset($_SESSION['idvendedor']))
 			var $monedaOportunidad;
 			var $etapaOportunidad;
 			var $descripcionOportunidad;
+			var $costoInstalacionOportunidad;
 			
 			var $primeraFecha;
 			var $ultimaFecha;
@@ -418,6 +419,7 @@ if(!isset($_SESSION['idvendedor']))
 						descripcion,
 						periodosPagos,
 						monto,
+						montoinstalacion,
 						idmoneda,
 						idprospecto,
 						idetapa,
@@ -429,6 +431,7 @@ if(!isset($_SESSION['idvendedor']))
 						'".$this->descripcionOportunidad."',
 						'".$this->periodosPagos."',
 						'".$this->montoOportunidad."',
+						'".$this->costoInstalacionOportunidad."',
 						'".$this->monedaOportunidad."',
 						'".$this->ultimoIdProspecto."',
 						'".$this->etapaOportunidad."',
@@ -586,6 +589,7 @@ if(!isset($_SESSION['idvendedor']))
 										descripcion = '".$this->descripcionOportunidad."',	
 										periodosPagos = '".$this->periodosPagos."',
 										monto = '".$this->montoOportunidad."',
+										montoinstalacion = '".$this->costoInstalacionOportunidad."',
 										idmoneda = '".$this->monedaOportunidad."', 
 										idcontacto = '".$this->idContacto."', 
 										idetapa = '".$this->etapaOportunidad."',
