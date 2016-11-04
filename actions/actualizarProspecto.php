@@ -22,6 +22,7 @@ $prospectos->colorProspecto = $_POST['colorProspecto'];
 //$prospectos->etapaProspecto = $_POST['etapaProspecto'];
 //$prospectos->oportunidadProspecto = $_POST['oportunidadProspecto'];
 $prospectos->estadoProspecto = $_POST['estadoProspecto'];
+$prospectos->estadoDomicilioEmpresa = $_POST['estadoDomicilioEmpresa'];
 
 $prospectos->idprospecto = $_POST['idprospecto'];
 

@@ -292,7 +292,7 @@ $idOportunidad=(isset($_REQUEST['idOportunidad']))?$_REQUEST['idOportunidad']:""
                     $("#conentDetallePros").load("../../../views/prospectos/vistasDetalle/verOportunidades.php?idprospecto=" + $("#idprospecto").val());
                   }
                 });
-           alert("correo")
+           //alert("correo")
         });
       /*enviar por ajax todos los datos incluyendo el archivo*/
       

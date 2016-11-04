@@ -44,6 +44,8 @@ $idEtapaProspecto = null;
 $obtenerMonedas = $prospectos->obtenerMonedas();
 $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
 
+$estadosRow = $prospectos->consultarEstados();
+
 
 
 ?>
@@ -67,6 +69,11 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                        <input type="text" id="rfcEmpresa" name="rfcEmpresa" class="form-control inputProspecto" required>
                    </div>
 
+										<div class="form-group">
+                        <label for="cpEmpresa">Codigo Postal</label>
+                        <input type="number" id="cpEmpresa" name="cpEmpresa" class="form-control inputProspecto">
+                    </div>	
+								
                     <div class="form-group">
                         <label for="calleEmpresa">Calle</label>
                         <input type="text" id="calleEmpresa" name="calleEmpresa" class="form-control inputProspecto" required>
@@ -77,24 +84,34 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                         <input type="number" id="numeroEmpresa" name="numeroEmpresa" class="form-control inputProspecto" required>
                     </div>
 
-										<div class="form-group">
-                        <label for="cpEmpresa">Codigo Postal</label>
-                        <input type="number" id="cpEmpresa" name="cpEmpresa" class="form-control inputProspecto">
-                    </div>		
-								
                     <div class="form-group">
-                        <label for="coloniaEmpresa">Colonia</label>
-                        <input type="text" id="coloniaEmpresa" name="coloniaEmpresa" class="form-control inputProspecto" required>
+                        <label for="estadoDomicilioEmpresa">Estado</label>
+												<select name="estadoDomicilioEmpresa" id="estadoDomicilioEmpresa" class="form-control inputProspecto" required>
+													<?php
+													foreach($estadosRow as $rowEstado){
+														?>
+													<option value="<?=$rowEstado['Estado'];?>"><?=$rowEstado['Estado'];?></option>
+													<?php
+													}
+													?>
+												</select>
                     </div>
+								
 										
+
               </div>
               <div class="col-md-4 col-sm-6">
-                   
                     <div class="form-group">
                         <label for="ciudadEmpresa">Ciudad</label>
-                        <input type="text" id="ciudadEmpresa" name="ciudadEmpresa" class="form-control inputProspecto" required>
+												<select name="ciudadEmpresa" id="ciudadEmpresa" class="form-control inputProspecto" required></select>
                     </div>
 
+										<div class="form-group">
+                        <label for="coloniaEmpresa">Colonia</label>
+											<select name="coloniaEmpresa" id="coloniaEmpresa" class="form-control inputProspecto" required>
+											</select>
+                    </div>
+								
                     <div class="form-group">
                         <label for="origenProspecto">Origen</label>
                         <select name="origenProspecto" class="form-control inputProspecto" id="origenProspecto">
@@ -107,7 +124,7 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                         </select>
                     </div>
 									 <div class="form-group">
-                        <label for="estadoProspecto">Estado</label>
+                        <label for="estadoProspecto">Estado de prospecto</label>
                         <select name="estadoProspecto" id="estadoProspecto" class="form-control inputProspecto">
                             <?php
                                while($row = $estadosProspectos->fetch_assoc()) {
@@ -115,7 +132,6 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
                                 <?php  
                                 }
                             ?>
-						
                         </select>
                     </div>
 								<div class="form-group">
@@ -194,11 +210,91 @@ $ultimoIdProspectoRow = $prospectos->ultimoIdProspecto();
 
 <script>
 	
-	
-	var tipousuario=<?php $idjefeventas ?>;
-	
  $("#cerrarAltaProspectos").click(function(){
 	 	//alert(tipousuario);
 			 $("#content").load( "../../views/prospectos/vistaProspectos.php" );
 	  });
+$('#cpEmpresa').keyup(function() {
+			 if($('#cpEmpresa').val().length >= 4){//ire a consultar a la BD
+					consultarDireccionXCP($('#cpEmpresa').val());
+			 }
+		});
+	
+	$("#estadoDomicilioEmpresa").change(function(){
+		consultarCiudades($("#estadoDomicilioEmpresa").val());
+	});
+	
+	$("#ciudadEmpresa").change(function(){
+		consultarColonias($("#ciudadEmpresa").val());
+	});
+	
+	function consultarDireccionXCP(cp){
+				$.ajax({
+						type: "POST",
+						dataType:"json",
+						url: '../../actions/prospectos/consultarDatosXCP.php',
+						data: "cp="+cp,
+						success: function(data){
+							if(data.cp != null){
+								alert(data.alert);
+								/*Estado*/
+										$( "option:contains('"+data.estado+"')" ).filter(function() {
+    									return $(this).text() === data.estado; 
+										}).attr('selected','selected'); // esta funcion busca exactamente lo que necesitas
+								/*Estado*/
+								
+								/*Ciudad*/
+								$("#ciudadEmpresa").append( "<option value='"+data.municipio+"'>"+data.municipio+"</option>" );
+								/*Ciudad*/
+								
+								/*Colonia*/
+										var str = data.colonia;
+										var res = str.split(";");
+										for(var x=0;x<res.length;x++){
+											$("#coloniaEmpresa").append( "<option value='"+res[x]+"'>"+res[x]+"</option>" );
+										}
+								/*Colonia*/
+							}
+						
+						}
+					});
+	}
+	
+	function consultarCiudades(estado){
+			$.ajax({
+						type: "POST",
+						dataType:"json",
+						url: '../../actions/prospectos/consultarDatosXCP.php',
+						data: "estado="+estado,
+						success: function(data){
+							$("#ciudadEmpresa option").remove();
+							for(var x = 0; x<data.numCiudades; x++){
+								$("#ciudadEmpresa").append( "<option value='"+data.municipio[x]+"'>"+data.municipio[x]+"</option>" );
+							}
+						}
+					});
+	}	
+	
+	function consultarColonias(ciudad){
+			$.ajax({
+						type: "POST",
+						dataType:"json",
+						url: '../../actions/prospectos/consultarDatosXCP.php',
+						data: "ciudad="+ciudad,
+						success: function(data){
+							$("#coloniaEmpresa option").remove();
+							for(var x = 0; x<data.numColonias; x++){
+								
+									var str = data.colonia[x];
+										var res = str.split(";");
+										for(var x2=0;x2<res.length;x2++){
+											$("#coloniaEmpresa").append( "<option value='"+res[x2]+"'>"+res[x2]+"</option>" );
+										}
+								
+								
+								//$("#coloniaEmpresa").append( "<option value='"+data.colonia[x]+"'>"+data.colonia[x]+"</option>" );
+							}
+						}
+					});
+	}
 </script>

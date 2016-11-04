@@ -23,6 +23,7 @@ if(!isset($_SESSION['idvendedor']))
         var $origenProspecto;
         var $colorProspecto;
 				var $estadoProspecto;
+				var $estadoDomicilioEmpresa;
 			
 			var $idven;
 			
@@ -141,6 +142,7 @@ if(!isset($_SESSION['idvendedor']))
 						(idprospecto,
 						nombre,
 						rfc,
+						estadodomicilio,
 						calle,
 						numerodomicilio,
 						ciudad,
@@ -154,6 +156,7 @@ if(!isset($_SESSION['idvendedor']))
 						VALUES (NULL,
 						'".$this->nombreEmpresa."',
 						'".$this->rfcEmpresa."',
+						'".$this->estadoDomicilioEmpresa."',
 						'".$this->calleEmpresa."',
 						'".$this->numeroEmpresa."',
 						'".$this->ciudadEmpresa."',
@@ -246,6 +249,7 @@ if(!isset($_SESSION['idvendedor']))
 									SET 
 										nombre = '".$this->nombreEmpresa."',
 										rfc = '".$this->rfcEmpresa."',
+										estadodomicilio = '".$this->estadoDomicilioEmpresa."',
 										calle = '".$this->calleEmpresa."',
 										numerodomicilio = '".$this->numeroEmpresa."', 
 										ciudad = '".$this->ciudadEmpresa."', 
@@ -947,6 +951,55 @@ if(!isset($_SESSION['idvendedor']))
 							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
 
 							$resultado = $conexion->prepare("SELECT * FROM archivosOportunidad WHERE idarchivosOportunidad = $idarchivosOportunidad");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
+				}
+			public function consultarDomicilioXCP(){
+					try {
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2]);
+
+							$resultado = $conexion->prepare("SELECT * FROM codigospostales WHERE CodigoPostal = $this->cpEmpresa");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
+				}
+			public function consultarEstados(){
+					try {
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2],array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+							$resultado = $conexion->prepare("SELECT DISTINCT Estado FROM codigospostales");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
+				}
+			public function consultarCiudadesXEstado(){
+					try {
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2],array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+							$resultado = $conexion->prepare("SELECT DISTINCT Municipio FROM codigospostales WHERE Estado = '$this->estadoDomicilioEmpresa'");
+						$resultado->execute();
+							return $resultado;
+
+					} catch (PDOException $e) {
+							return false;
+					}
+				}	
+			
+			public function consultarColoniasXCiudad(){
+					try {
+							$conexion = new PDO('mysql:host='.$this->datosConexionBD[0].';dbname='.$this->datosConexionBD[3], $this->datosConexionBD[1], $this->datosConexionBD[2],array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+							$resultado = $conexion->prepare("SELECT DISTINCT Colonia FROM codigospostales WHERE Municipio = '$this->ciudadEmpresa'");
 						$resultado->execute();
 							return $resultado;
 

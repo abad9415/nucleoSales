@@ -61,6 +61,7 @@
                      '&origenProspecto='+$("#origenProspecto").val()+
                      '&estadoProspecto='+$("#estadoProspecto").val()+
                      '&colorProspecto='+$("#colorProspecto").val()+
+                     '&estadoDomicilioEmpresa='+$("#estadoDomicilioEmpresa").val()+
                      //'&etapaProspecto='+$("#etapaProspecto").val()+
                      '&oportunidadProspecto='+$("#oportunidadProspecto").val()+
                          '&sexoContacto='+$("#sexoContacto").val()+

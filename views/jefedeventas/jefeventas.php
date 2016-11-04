@@ -3,7 +3,9 @@
 session_start(); //Iniciamos la Sesion o la Continuamos
 include '../../conexionBD.php';
   //requerimos de la clase prospectos que esta en el siguiente archivo
- 	require '../../lib/Setapas.php';
+ 	require '../../lib/Setapas.php';	
+	require '../../lib/metodos_jefeventas.php';
+
 
 
 if(!isset($_SESSION['session']))
@@ -16,8 +18,8 @@ if(!isset($_SESSION['session']))
 
 	$Setapas = new Setapas($datosConexionBD);
 	$ListadoJefe = $Setapas->ListadoJefe($etapa);  
-
-
+$historial =  new jefeventas($datosConexionBD);
+$resultado = $historial->obtener_historial();
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +141,7 @@ if(!isset($_SESSION['session']))
                 
               </tr>
            </thead>
-						<tbody>
+						<tbody id=cuerpo>
            <?php
            while($row = $ListadoJefe->fetch_assoc()) {
 						 	$fecha1 =  $row['fechadeetapa'];
@@ -165,11 +167,43 @@ if(!isset($_SESSION['session']))
 		</div>
 		
 	</div>
+<br>
+			<h2 align="center">
+				Historial
+			</h2>
+<!--DIv Historial-->
+<div id=tablahistorial >
+				<table id=tablah>
+					<thead>
+						<tr>
+							<th>
+								ID
+							</th>
+							<th>
+								Fecha 
+							</th>
+							<th>
+								Descripcion
+							</th>
+						</tr>
+					</thead>
+								
+							 	<?php
+									 while($row = $resultado->fetch_assoc()) {?>
+												<tr>
 
-<!--DIV Tareas-->
-<div id="tareas" align="center">
-	
-</div>
+												<td><p><?= $row['idhistorial']; ?><p></td>
+												<td><?= $row['fecha']; ?></td>
+												<td><?= $row['descripcion'];?></td>
+												
+											</tr>
+									 <?php
+										}?>
+								
+				</table>
+				
+			</div>
+
 <!--Final de DIV Tareas-->
 
 
@@ -189,7 +223,7 @@ if(!isset($_SESSION['session']))
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
 	<script>
-		$('tbody').find('tr').click(function(e){
+		$('#cuerpo').find('tr').click(function(e){
 			var id=$(this).find('p').text();
 			var Etapa=$(this).find('b').text();
 			var etapa=0;
@@ -249,7 +283,13 @@ if(!isset($_SESSION['session']))
 		$("#editarInfoJefe").click(function(){
         $("#content").load( "../../views/jefedeventas/config/configPhotoUser.php" );
 	});	
+		
+	
+
 	</script>
+			<script>
+					$('#tablah').dataTable();
+			</script>
 </body>
 </html>
 
