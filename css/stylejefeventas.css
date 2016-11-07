@@ -110,14 +110,17 @@ th {
 
  
 }
-#campoprospectos #tablavendedorpro_paginate{
+#campoprospectos #tablavendedorpro_paginate {
    display: flex;
   flex-direction: row;
   justify-content: space-around;
- 
-
   color:#2A6088;
+
 }
+
+
+
+
 
 .contenedorvendedores{
   display: flex;
@@ -128,7 +131,7 @@ th {
   font-style: bold;
    padding 20px;
 }
-.contenedorvendedores #tablaven_paginate{
+.contenedorvendedores #tablaven_paginate {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -136,6 +139,19 @@ th {
 
   color:#2A6088;
 }
+#tablahistorial #tablah_paginate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
+
+  color:#2A6088;
+}
+
+
+
+
+
 #opciones{
   display: flex;
   justify-content: center;

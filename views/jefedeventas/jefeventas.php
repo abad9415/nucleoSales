@@ -120,6 +120,54 @@ $resultado = $historial->obtener_historial();
 	 </div>
 		<div id="content" align="center">
 			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#MetasJefe">Oportunidades Inactivas</button>
+			<br>
+			<h2 align="center">
+				Historial
+			</h2>
+<!--DIv Historial-->
+<div id=tablahistorial >
+				<table id=tablah>
+					<thead>
+						<tr>
+							<th>
+								ID
+							</th>
+							<th>
+								Fecha 
+							</th>
+							<th>
+								Tipo 
+							</th>
+							<th>
+								Descripcion
+							</th>
+						</tr>
+					</thead>
+								
+							 	<?php
+									 while($row = $resultado->fetch_assoc()) {
+										 $tipo = $row['tipo'];
+										?>
+												<tr>
+
+												<td><p><?= $row['idhistorial']; ?><p></td>
+													<input type="hidden" id="identificador" value="<?= $row['identificador']; ?>">
+																<input type="hidden" id="idusuario" value="<?= $row['usuario']; ?>">
+																<input type="hidden" id="idProspectoDOportunidad" value="<?= $row['prospecto']; ?>">
+																<input type="hidden" id="tipoLog" value="<?=$tipo;?>">
+												<td><?= $row['fecha']; ?></td>
+														<td><?=$tipo;?></td>
+												<td><?= $row['descripcion'];?></td>
+												
+											</tr>
+									 <?php
+										}?>
+								
+				</table>
+				
+			</div>
+
+<!--Final de DIV Tareas-->
 		</div>
 		<div class="modal fade" id="MetasJefe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
@@ -168,43 +216,7 @@ $resultado = $historial->obtener_historial();
 		
 	</div>
 <br>
-			<h2 align="center">
-				Historial
-			</h2>
-<!--DIv Historial-->
-<div id=tablahistorial >
-				<table id=tablah>
-					<thead>
-						<tr>
-							<th>
-								ID
-							</th>
-							<th>
-								Fecha 
-							</th>
-							<th>
-								Descripcion
-							</th>
-						</tr>
-					</thead>
-								
-							 	<?php
-									 while($row = $resultado->fetch_assoc()) {?>
-												<tr>
-
-												<td><p><?= $row['idhistorial']; ?><p></td>
-												<td><?= $row['fecha']; ?></td>
-												<td><?= $row['descripcion'];?></td>
-												
-											</tr>
-									 <?php
-										}?>
-								
-				</table>
-				
-			</div>
-
-<!--Final de DIV Tareas-->
+			
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -220,9 +232,24 @@ $resultado = $historial->obtener_historial();
 	<script src='../../views/Calendario/js/fullcalendar.min.js'></script>
 	<script src="../../js/lang-es.js"></script>
 	<script src="../../recursos/hammer/hammer.min.js"></script>
-	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script src="../../js/tabla.js"></script>
 	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script> 
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRxC6Y4f-j6nECyHWigtBATtJyXyha-XU&libraries=adsense&sensor=true&language=es"></script>
 	<script>
+		
+		$('#tablah').find('tr').click(function(e){
+				var identi= $(this).find('#idusuario').val();
+				var idProsOport= $(this).find('#identificador').val();
+				var tipoLog= $(this).find('#tipoLog').val();
+				var idProspectoDOportunidad= $(this).find('#idProspectoDOportunidad').val();
+			
+				if(tipoLog == 'Prospecto'){//soy prospecto
+					$("#content").load( "../../views/prospectos/detalleProspecto.php?idprospecto=" + idProsOport);
+				}else if(tipoLog == 'Oportunidad'){//soy oportunidad o no?
+					$("#content").load( "../../views/prospectos/detalleProspecto.php?idprospecto=" + idProspectoDOportunidad + "&abrirOportunidad=1");
+				}
+		});
+
 		$('#cuerpo').find('tr').click(function(e){
 			var id=$(this).find('p').text();
 			var Etapa=$(this).find('b').text();
@@ -240,8 +267,7 @@ $resultado = $historial->obtener_historial();
 		default: 
 			etapa=0;
 			break;
-	}
-	
+		}
 		 $.ajax({
 						type: "POST",
 						url: "../../views/grafica/OportunidaLista.php",
@@ -251,8 +277,6 @@ $resultado = $historial->obtener_historial();
 						 swal(datos);				
 						}
 			 	});
-
-			
 		});	
 	
 			  var $burguerButton = document.getElementById('btnMostrarMenuVendedor');

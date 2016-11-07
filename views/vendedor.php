@@ -65,6 +65,7 @@ if($foto == ""){
     <link href="Calendario/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Core JavaScript -->
     <script src="Calendario/js/bootstrap.min.js"></script>
+		<!-- 	Maps de google -->
 	  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRxC6Y4f-j6nECyHWigtBATtJyXyha-XU&libraries=adsense&sensor=true&language=es"></script>
  
 		<!-- FullCalendar -->

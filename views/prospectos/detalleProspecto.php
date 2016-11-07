@@ -1,5 +1,6 @@
 <?php
 $idprospecto=(isset($_REQUEST['idprospecto']))?$_REQUEST['idprospecto']:"";
+$abrirOportunidad=(isset($_REQUEST['abrirOportunidad']))?$_REQUEST['abrirOportunidad']:"";
 //echo $idprospecto;
 //incluimos el archivo de configuracion de la BD
 include '../../conexionBD.php';
@@ -142,7 +143,7 @@ for($xa=1;$xa<=$xe;$xa++)
 $estadosProspectos = $prospectos->obtenerEstados();
 $origenesProspectos = $prospectos->obtenerOrigenes();
 ?>
-
+<input type="hidden" value="<?=$abrirOportunidad;?>" id="abrirOportunidad" name="abrirOportunidad">
 <input type="hidden" id="idprospecto" value="<?=$idprospecto;?>">
 <input type="hidden" id="colorProspectoMaster" value="<?=$colorEmpresa;?>">
 	<section class="contentInt">
@@ -188,7 +189,12 @@ $origenesProspectos = $prospectos->obtenerOrigenes();
 	</section>
 	
 <script>
-	$("#conentDetallePros").load( "../../views/prospectos/vistasDetalle/verMapa.php?idprospecto=" + $("#idprospecto").val());
+	if($("#abrirOportunidad").val() == 1){
+		$("#conentDetallePros").load( "../../views/prospectos/vistasDetalle/verOportunidades.php?idprospecto=" + $("#idprospecto").val());
+	}else{
+		$("#conentDetallePros").load( "../../views/prospectos/vistasDetalle/verMapa.php?idprospecto=" + $("#idprospecto").val());
+	}
+	
 $("#inicioMapaPros").click(function(){
 			 $("#conentDetallePros").load( "../../views/prospectos/vistasDetalle/verMapa.php?idprospecto=" + $("#idprospecto").val());
 			 //$("#conentDetallePros").load( "../../views/prospectos/vistasDetalle/verProspecto.php?idprospecto=" + $("#idprospecto").val());

@@ -1,5 +1,6 @@
 $(document).ready(function() {
                 load_map();
+                agregarEjecutar();
            
 
             var map;
@@ -35,7 +36,7 @@ $(document).ready(function() {
                agregarEjecutar();
             });
   
-          agregarEjecutar();
+          
             function geocodeResult(results, status) {
                 // Verificamos el estatus
                 if (status == 'OK') {
